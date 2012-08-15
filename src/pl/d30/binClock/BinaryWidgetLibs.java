@@ -11,8 +11,7 @@ public abstract class BinaryWidgetLibs {
 	
 	static final int SECOND = 1000;
 	static final int MINUTE = 60000;
-	
-	static final int BACKGROUND_DEFAULT = -1;
+
 	static final int BACKGROUND_NONE = 0;
 	static final int BACKGROUND_BLACK = 1;
 	static final int BACKGROUND_WHITE = 2;
@@ -32,7 +31,7 @@ public abstract class BinaryWidgetLibs {
 		int[] layoutVars = new int[ 6 ];
 		
 		int skin = Integer.parseInt( sp.getString("skin", "0") );
-		int bgId = Integer.parseInt( sp.getString("background", Integer.toString(BACKGROUND_DEFAULT) ) );
+		int bgId = Integer.parseInt( sp.getString("background", Integer.toString(BACKGROUND_BLACK) ) );
 		switch( skin ) {
 			case SKIN_BYMAURYCY:
 				layoutVars[ LAYOUT_ID ] = R.layout.layout_bymaurycy;
@@ -45,7 +44,7 @@ public abstract class BinaryWidgetLibs {
 			case SKIN_BYMATKO:
 				layoutVars[ LAYOUT_ID ] = R.layout.layout_bymatko;
 				
-				if( bgId==BACKGROUND_DEFAULT || bgId==BACKGROUND_BLACK ) {
+				if( bgId==BACKGROUND_BLACK ) {
 					
 					layoutVars[ BACKGROUND_ID ] = R.drawable.bg_black;
 					layoutVars[ ON_ID ] = R.drawable.bymatko_black_on;
