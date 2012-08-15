@@ -65,17 +65,6 @@ public abstract class BinaryWidgetLibs {
 				
 				break;
 		}
-		
-		// set background
-		
-		/*if( bgId!=BACKGROUND_DEFAULT ) {
-			// background color change should also trigger on|off images changes
-			switch( bgId ) {
-				case BACKGROUND_BLACK: layoutVars[ BACKGROUND_ID ] = R.drawable.bg_black; break;
-				case BACKGROUND_WHITE: 
-				case BACKGROUND_NONE: default: layoutVars[ BACKGROUND_ID ] = 0; break;
-			}
-		}*/
 
 		boolean seconds = sp.getBoolean("seconds", false);
 		if( !seconds ) {
