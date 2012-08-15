@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="square">34dp</dimen>
+    <dimen name="spacing">2dp</dimen>
+    
+    <dimen name="bit">18dp</dimen>
+    <dimen name="spacing2">6dp</dimen>
+</resources>
