@@ -124,8 +124,7 @@ public class BinaryWidgetConfiguration extends PreferenceActivity {
 		Intent i = new Intent( c.getApplicationContext(), BinaryWidgetReceiver.class );
 		PendingIntent pi = PendingIntent.getBroadcast( c.getApplicationContext(), 0, i, 0 );
 		AlarmManager a = (AlarmManager) c.getSystemService( Context.ALARM_SERVICE );
-		a.cancel( pi );
-		a.setRepeating( AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + layoutVars[ DELAY ], layoutVars[ INTERVAL ], pi );
+		a.setRepeating( AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + layoutVars[ DELAY ], layoutVars[ INTERVAL ], pi );		
 						
 		/// return widget ID
 		Intent resultValue = new Intent();

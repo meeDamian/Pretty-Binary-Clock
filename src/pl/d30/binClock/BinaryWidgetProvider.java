@@ -1,6 +1,8 @@
 package pl.d30.binClock;
 
-import static pl.d30.binClock.BinaryWidgetLibs.*;
+import static pl.d30.binClock.BinaryWidgetLibs.LOG;
+import static pl.d30.binClock.BinaryWidgetLibs.PREF_NAME;
+import static pl.d30.binClock.BinaryWidgetLibs.SECOND;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetProvider;
@@ -22,9 +24,7 @@ public class BinaryWidgetProvider extends AppWidgetProvider {
 
 		Intent i = new Intent( c.getApplicationContext(), BinaryWidgetReceiver.class );
 		PendingIntent pi = PendingIntent.getBroadcast( c.getApplicationContext(), 0, i, 0 );
-		AlarmManager a = (AlarmManager) c.getSystemService( Context.ALARM_SERVICE );
-		a.cancel( pi );
-		
+		AlarmManager a = (AlarmManager) c.getSystemService( Context.ALARM_SERVICE );		
 		a.setRepeating( AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime(), SECOND, pi );
 		
 		super.onEnabled( c );		

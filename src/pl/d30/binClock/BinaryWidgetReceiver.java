@@ -63,7 +63,7 @@ public class BinaryWidgetReceiver extends BroadcastReceiver {
 			Log.wtf(LOG, "Alarm is running with no widgets added.");
 
 		} else if( allIds!=null ) {
-			
+
 			RemoteViews rv;
 			
 			// for each widget added on screen
