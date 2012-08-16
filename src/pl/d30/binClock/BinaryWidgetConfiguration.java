@@ -8,6 +8,7 @@ import static pl.d30.binClock.BinaryWidgetLibs.LOG;
 import static pl.d30.binClock.BinaryWidgetLibs.MINUTE;
 import static pl.d30.binClock.BinaryWidgetLibs.PREF_NAME;
 import static pl.d30.binClock.BinaryWidgetLibs.processSettings;
+import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -26,21 +27,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 public class BinaryWidgetConfiguration extends PreferenceActivity {	
 	
 	private static int widgetID = AppWidgetManager.INVALID_APPWIDGET_ID;
 	
+	@TargetApi(11)
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.d(LOG, "Config.onCreate();");
 		
-		if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ) {
-			
-			getFragmentManager().beginTransaction().replace( android.R.id.content, new BinaryWidgetSettings() ).commit();
-			
-		} 
+		
 		
 		Intent i = getIntent();
 		Bundle extras = i.getExtras();
@@ -54,6 +53,20 @@ public class BinaryWidgetConfiguration extends PreferenceActivity {
 			setResult( RESULT_CANCELED );
 			finish();
 			
+		}
+		
+		if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ) {
+			
+			getFragmentManager().beginTransaction().replace( android.R.id.content, new BinaryWidgetSettings() ).commit();
+			
+		} else {
+			
+			PreferenceManager localPrefs = getPreferenceManager();
+			localPrefs.setSharedPreferencesName( PREF_NAME+widgetID );
+			addPreferencesFromResource( R.xml.preferences );
+			
+			Toast.makeText(getApplicationContext(), R.string.legacy_done, Toast.LENGTH_LONG).show();
+
 		}
 	}
 	
@@ -105,6 +118,8 @@ public class BinaryWidgetConfiguration extends PreferenceActivity {
 		if( layoutVars[ INTERVAL ]==MINUTE ) rv.setViewVisibility( R.id.seconds, View.GONE );
 		awm.updateAppWidget( widgetID, rv );
 		
+		// TODO: b4 starting alarm run intent once
+		
 		// start alarm manager running this particular widget
 		Intent i = new Intent( c.getApplicationContext(), BinaryWidgetReceiver.class );
 		PendingIntent pi = PendingIntent.getBroadcast( c.getApplicationContext(), 0, i, 0 );
@@ -120,6 +135,7 @@ public class BinaryWidgetConfiguration extends PreferenceActivity {
 		finish();
 	}
 	
+	@TargetApi(11)
 	public static class BinaryWidgetSettings extends PreferenceFragment {
 		
 		@Override

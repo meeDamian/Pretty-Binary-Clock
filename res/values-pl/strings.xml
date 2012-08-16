@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading">Ładowanie Widgeta&#8230;</string>
+    <string name="app_name">Zegarek Binarny</string>
+     
+    <string name="on">Wł.</string>
+    <string name="off">Wył.</string>
+    <string name="empty">Pusty</string>
+    
+    <!-- Widget Configuration -->
+    <string name="legacy_done">Naciśnij wstecz, by zapisać ustawienia i dodać widget</string>
+    
+    <string name="settings_basic">Podstawowe</string>
+	    <string name="seconds_title">Sekundy</string>
+	    <string name="seconds_summaryOn">Będą pokazywane</string>
+	    <string name="seconds_summaryOff">Ukryte</string>
+	    
+	    <string name="skin_title">Skórka</string>
+	    <string name="skin_summary">Wybierz skórkę bazową</string>
+
+	<string name="settings_advanced">Zaawansowane</string>
+	    <string name="background_title">Tło</string>
+	    <string name="background_summary">Wybierz swój ulubiony kolor</string>
+	    
+		<string name="compact_title">Ubinarnij całe numery</string>
+	    <string name="compactOn_summary">Każdy numer będzie jedną kolumną</string>
+	    <string name="compactOff_summary">Każda cyfra będzie kolumną</string>
+	    	    
+	    <string name="digitalClock_title">Pokaż zegarek cyfrowy</string>
+	    <string name="digitalClock_summary">Nie zaznaczaj tego, jeżeli nie umiesz liczyć do 24 (brak trybu am/pm)</string>
+    
+    <string name="menu_done">Zapisz</string>
+    
+</resources>

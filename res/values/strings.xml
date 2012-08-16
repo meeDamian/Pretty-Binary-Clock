@@ -8,6 +8,8 @@
     <string name="empty">Empty</string>
     
     <!-- Widget Configuration -->
+    <string name="legacy_done">Press back to save settings and add widget</string>
+    
     <string name="settings_basic">Basic</string>
 	    <string name="seconds_title">Seconds</string>
 	    <string name="seconds_summaryOn">Displayed</string>
