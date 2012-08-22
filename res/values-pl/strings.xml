@@ -31,4 +31,8 @@
     
     <string name="menu_done">Zapisz</string>
     
+    <string-array name="random_tip">
+        <item>Kliknij w widget, by szybko przejść do ustawień budzika</item>        
+    </string-array>
+    
 </resources>

@@ -31,4 +31,8 @@
     
     <string name="menu_done">Done</string>
     
+    <string-array name="random_tip">
+        <item>Click on the widget for quick access to Alarm Clock</item>        
+    </string-array>
+    
 </resources>
