@@ -35,9 +35,26 @@ public abstract class BinaryWidgetLibs {
 		switch( skin ) {
 			case SKIN_BYMAURYCY:
 				layoutVars[ LAYOUT_ID ] = R.layout.layout_bymaurycy;
-				layoutVars[ BACKGROUND_ID ] = R.drawable.bg_black;
-				layoutVars[ ON_ID ] = R.drawable.bymaurycy_black_on;
-				layoutVars[ OFF_ID ] = R.drawable.bymaurycy_black_off;
+				
+				if( bgId==BACKGROUND_BLACK ) {
+					
+					layoutVars[ BACKGROUND_ID ] = R.drawable.bg_black;
+					layoutVars[ ON_ID ] = R.drawable.bymaurycy_black_on;
+					layoutVars[ OFF_ID ] = R.drawable.bymaurycy_black_off;
+					
+				} else if( bgId==BACKGROUND_WHITE ) {
+					
+					layoutVars[ BACKGROUND_ID ] = R.drawable.bg_white;
+					layoutVars[ ON_ID ] = R.drawable.bymaurycy_black_on;
+					layoutVars[ OFF_ID ] = R.drawable.bymaurycy_black_off;
+					
+				} else if( bgId==BACKGROUND_NONE ) {
+
+					layoutVars[ ON_ID ] = R.drawable.bymaurycy_black_on;
+					layoutVars[ OFF_ID ] = R.drawable.bymaurycy_black_off;
+					
+				}
+
 				break;
 
 			default:
