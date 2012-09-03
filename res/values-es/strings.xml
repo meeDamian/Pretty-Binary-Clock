@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading">Carga Widget&#8230;</string>
+    <string name="app_name">El reloj binario</string>
+     
+    <string name="on">Encendero</string>
+    <string name="off">Apagado</string>
+    <string name="empty">Vacío</string>
+    
+    <!-- Widget Configuration -->
+    <string name="legacy_done">Apierta Atrás para guardar los ajustes y añade el widget</string>
+    
+    <string name="settings_basic">Básico</string>
+	    <string name="seconds_title">Unos segundos</string>
+	    <string name="seconds_summaryOn">Aparecerá</string>
+	    <string name="seconds_summaryOff">Escondidos</string>
+	    
+	    <string name="skin_title">Tema</string>
+	    <string name="skin_summary">Elige una Tema básica</string>
+
+	<string name="settings_advanced">Avanzado</string>
+	    <string name="background_title">El fondo</string>
+	    <string name="background_summary">Elige tu color favorito</string>
+	    
+		<string name="compact_title">[Ubinarnij] todos números</string>
+	    <string name="compactOn_summary">Cada número es una columna</string>
+	    <string name="compactOff_summary">Cada cifra es una columna</string>
+	    	    
+	    <string name="digitalClock_title">Mostrar reloj digital</string>
+	    <string name="digitalClock_summary">No marque esta opción si puede contar hasta 24 (no el modo de am/pm)</string>
+    
+    <string name="menu_done">Guarda</string>
+    
+    <string-array name="random_tip">
+        <item>Haga clic en el widget para acceder a los ajustes de alarma</item>
+    </string-array>
+    
+</resources>

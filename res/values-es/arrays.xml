@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- for skins -->
+    <string-array name="skins_list">
+        <item>Los ruedas (by Matko)</item>
+        <item>Los cuadrados (by Maurycy)</item>
+    </string-array>
+    <string-array name="skins_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    
+    <!-- for backgrounds -->
+    <string-array name="background_list">
+        <item>Falta</item>
+        <item>Negros (Defecto)</item>
+        <item>Blancos</item>
+    </string-array>
+    <string-array name="background_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>
