@@ -114,7 +114,7 @@ public class BinaryWidgetReceiver extends BroadcastReceiver {
 					String packageName = clockImpls[i][1];
 					String className = clockImpls[i][2];
 					
-					// TODO: show Toast saying: "To change widget proporties just add new one!" after 1, 3, 10, 30, 100 click
+					// TODO: show Toast saying: "To change widget proporties just dump this and add new one!" after 1, 3, 10, 30, 100 click
 
 					try {
 						ComponentName cn = new ComponentName( packageName, className );

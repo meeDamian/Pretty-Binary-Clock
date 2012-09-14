@@ -106,7 +106,7 @@ public class BinaryWidgetConfiguration extends PreferenceActivity {
 		
 		int[] layoutVars = processSettings( sp );
 		
-		// TODO: save to common preferencesFile current number of widgets that need to be updated every second
+		// TODO: save to common preferencesFile if there are any widgets that need to be updated every second
 		// TODO: save to common preferencesFile default action triggered by widget click
 		// SharedPreferences common = PreferenceManager.getDefaultSharedPreferences( getApplicationContext() );
 		
@@ -121,8 +121,8 @@ public class BinaryWidgetConfiguration extends PreferenceActivity {
 		// TODO: b4 starting alarm run intent once
 		
 		// start alarm manager running this particular widget
-		Intent i = new Intent( c.getApplicationContext(), BinaryWidgetReceiver.class );
-		PendingIntent pi = PendingIntent.getBroadcast( c.getApplicationContext(), 0, i, 0 );
+		Intent i = new Intent( c, BinaryWidgetReceiver.class );
+		PendingIntent pi = PendingIntent.getBroadcast( c, 0, i, 0 );
 		AlarmManager a = (AlarmManager) c.getSystemService( Context.ALARM_SERVICE );
 		a.setRepeating( AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + layoutVars[ DELAY ], layoutVars[ INTERVAL ], pi );		
 						
