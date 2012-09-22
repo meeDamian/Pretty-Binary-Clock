@@ -2,6 +2,7 @@
 <resources>
     <string name="loading">Your widget is loading&#8230;</string>
     <string name="app_name">Binary Clock</string>
+    <string name="app_desc">Binary Clock Description</string>
      
     <string name="on">On</string>
     <string name="off">Off</string>
