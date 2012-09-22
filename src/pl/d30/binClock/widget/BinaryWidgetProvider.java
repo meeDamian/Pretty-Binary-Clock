@@ -1,8 +1,8 @@
-package pl.d30.binClock;
+package pl.d30.binClock.widget;
 
-import static pl.d30.binClock.BinaryWidgetLibs.LOG;
-import static pl.d30.binClock.BinaryWidgetLibs.PREF_NAME;
-import static pl.d30.binClock.BinaryWidgetLibs.SECOND;
+import static pl.d30.binClock.widget.BinaryWidgetLibs.LOG;
+import static pl.d30.binClock.widget.BinaryWidgetLibs.PREF_NAME;
+import static pl.d30.binClock.widget.BinaryWidgetLibs.SECOND;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetProvider;

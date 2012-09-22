@@ -4,7 +4,7 @@
     android:previewImage="@drawable/preview"
     android:minHeight="114dp"
     android:minWidth="250dp"
-    android:configure="pl.d30.binClock.BinaryWidgetConfiguration" 
+    android:configure="pl.d30.binClock.widget.BinaryWidgetConfiguration" 
     android:resizeMode="vertical|horizontal">
     <!-- minWidth and minHeight should be the properties of smallest requirements of LARGEST widget -->
 

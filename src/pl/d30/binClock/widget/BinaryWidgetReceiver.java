@@ -1,15 +1,16 @@
-package pl.d30.binClock;
+package pl.d30.binClock.widget;
 
-import static pl.d30.binClock.BinaryWidgetLibs.BACKGROUND_ID;
-import static pl.d30.binClock.BinaryWidgetLibs.LAYOUT_ID;
-import static pl.d30.binClock.BinaryWidgetLibs.LOG;
-import static pl.d30.binClock.BinaryWidgetLibs.OFF_ID;
-import static pl.d30.binClock.BinaryWidgetLibs.ON_ID;
-import static pl.d30.binClock.BinaryWidgetLibs.PREF_NAME;
-import static pl.d30.binClock.BinaryWidgetLibs.processSettings;
+import static pl.d30.binClock.widget.BinaryWidgetLibs.BACKGROUND_ID;
+import static pl.d30.binClock.widget.BinaryWidgetLibs.LAYOUT_ID;
+import static pl.d30.binClock.widget.BinaryWidgetLibs.LOG;
+import static pl.d30.binClock.widget.BinaryWidgetLibs.OFF_ID;
+import static pl.d30.binClock.widget.BinaryWidgetLibs.ON_ID;
+import static pl.d30.binClock.widget.BinaryWidgetLibs.PREF_NAME;
+import static pl.d30.binClock.widget.BinaryWidgetLibs.processSettings;
 
 import java.util.Calendar;
 
+import pl.d30.binClock.R;
 import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;

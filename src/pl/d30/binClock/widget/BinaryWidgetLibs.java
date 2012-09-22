@@ -1,7 +1,8 @@
-package pl.d30.binClock;
+package pl.d30.binClock.widget;
 
 import java.util.Calendar;
 
+import pl.d30.binClock.R;
 import android.content.SharedPreferences;
 
 public abstract class BinaryWidgetLibs {
