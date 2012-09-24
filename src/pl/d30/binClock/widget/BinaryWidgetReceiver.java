@@ -1,12 +1,13 @@
 package pl.d30.binClock.widget;
 
-import static pl.d30.binClock.widget.BinaryWidgetLibs.BACKGROUND_ID;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.LAYOUT_ID;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.LOG;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.OFF_ID;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.ON_ID;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.PREF_NAME;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.processSettings;
+import static pl.d30.binClock.BinaryClockCore.WIDGET;
+import static pl.d30.binClock.BinaryClockCore.BACKGROUND_ID;
+import static pl.d30.binClock.BinaryClockCore.LAYOUT_ID;
+import static pl.d30.binClock.BinaryClockCore.LOG;
+import static pl.d30.binClock.BinaryClockCore.OFF_ID;
+import static pl.d30.binClock.BinaryClockCore.ON_ID;
+import static pl.d30.binClock.BinaryClockCore.PREF_NAME;
+import static pl.d30.binClock.BinaryClockCore.processProperties;
 
 import java.util.Calendar;
 
@@ -71,7 +72,7 @@ public class BinaryWidgetReceiver extends BroadcastReceiver {
 			for( int wid : allIds ) {
 				
 				SharedPreferences sp = context.getSharedPreferences( PREF_NAME+wid, Context.MODE_PRIVATE );
-				int[] layoutVars = processSettings( sp );
+				int[] layoutVars = processProperties( sp, WIDGET );
 				
 				rv = new RemoteViews( context.getPackageName(), layoutVars[ LAYOUT_ID ] );
 				

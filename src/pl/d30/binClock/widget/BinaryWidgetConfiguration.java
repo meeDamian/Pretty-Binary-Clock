@@ -1,13 +1,14 @@
 package pl.d30.binClock.widget;
 
-import static pl.d30.binClock.widget.BinaryWidgetLibs.BACKGROUND_ID;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.DELAY;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.INTERVAL;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.LAYOUT_ID;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.LOG;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.MINUTE;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.PREF_NAME;
-import static pl.d30.binClock.widget.BinaryWidgetLibs.processSettings;
+import static pl.d30.binClock.BinaryClockCore.WIDGET;
+import static pl.d30.binClock.BinaryClockCore.BACKGROUND_ID;
+import static pl.d30.binClock.BinaryClockCore.DELAY;
+import static pl.d30.binClock.BinaryClockCore.INTERVAL;
+import static pl.d30.binClock.BinaryClockCore.LAYOUT_ID;
+import static pl.d30.binClock.BinaryClockCore.LOG;
+import static pl.d30.binClock.BinaryClockCore.MINUTE;
+import static pl.d30.binClock.BinaryClockCore.PREF_NAME;
+import static pl.d30.binClock.BinaryClockCore.processProperties;
 import pl.d30.binClock.R;
 import android.annotation.TargetApi;
 import android.app.AlarmManager;
@@ -105,7 +106,7 @@ public class BinaryWidgetConfiguration extends PreferenceActivity {
 		Context c = getApplicationContext() ;
 		SharedPreferences sp = getSharedPreferences( PREF_NAME+widgetID, MODE_PRIVATE );
 		
-		int[] layoutVars = processSettings( sp );
+		int[] layoutVars = processProperties( sp, WIDGET );
 		
 		// TODO: save to common preferencesFile if there are any widgets that need to be updated every second
 		// TODO: save to common preferencesFile default action triggered by widget click
