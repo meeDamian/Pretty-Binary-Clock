@@ -102,6 +102,7 @@ public class BinaryWidgetConfiguration extends PreferenceActivity {
 		super.onBackPressed();
 	}
 	
+	// TODO: shouldn't this function be moved to parent?
 	private void createWidget() {
 		Context c = getApplicationContext() ;
 		SharedPreferences sp = getSharedPreferences( PREF_NAME+widgetID, MODE_PRIVATE );
