@@ -37,7 +37,6 @@
     <string name="hello_world">Here goes the clock!</string>
     <string name="menu_settings">Settings</string>
     
-    <string name="fullscreen_toggle">Toggle Fullscreen</string>
     <string name="stayawake_toggle">Toggle Screen Dimming</string>
 
 </resources>

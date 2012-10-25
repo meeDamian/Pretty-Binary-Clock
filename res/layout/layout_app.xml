@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
+    android:onClick="toggleActive"
     tools:context=".app.BinaryWidgetActivity" >
 
     <TextView
@@ -12,21 +13,4 @@
         android:layout_centerVertical="true"
         android:text="@string/hello_world" />
     
-    <ImageButton android:id="@+id/fullscreen_toggle"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:src="@drawable/fullscreen_on"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/fullscreen_toggle"
-        android:onClick="toggleFullscreen" />
-    
-    <ImageButton android:id="@+id/stayawake_toggle"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_toRightOf="@id/fullscreen_toggle"
-        android:src="@drawable/stayawake_low"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/stayawake_toggle"
-        android:onClick="toggleStayawake" />
-
 </RelativeLayout>
