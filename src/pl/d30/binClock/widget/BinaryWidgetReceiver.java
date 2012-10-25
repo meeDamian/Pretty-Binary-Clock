@@ -103,8 +103,8 @@ public class BinaryWidgetReceiver extends BroadcastReceiver {
 				String clockImpls[][] = {
 					{"Standard Alarm", "com.android.alarmclock", "com.android.alarmclock.AlarmClock"},
 			        {"HTC Alarm Clock", "com.htc.android.worldclock", "com.htc.android.worldclock.WorldClockTabControl" },
-			        {"Standar Alarm Clock", "com.android.deskclock", "com.android.deskclock.AlarmClock"},
-			        {"Froyo Nexus Alarm Clock", "com.google.android.deskclock", "com.android.deskclock.DeskClock"},
+			        {"Standard Alarm Clock", "com.android.deskclock", "com.android.deskclock.AlarmClock"},
+			        {"Froyo Nexus Alarm Clock", "com.google.android.deskclock", "com.android.deskclock.AlarmClock"},
 			        {"Moto Blur Alarm Clock", "com.motorola.blur.alarmclock",  "com.motorola.blur.alarmclock.AlarmClock"},
 			        {"Samsung Galaxy Clock", "com.sec.android.app.clockpackage","com.sec.android.app.clockpackage.ClockPackage"}
 				};
