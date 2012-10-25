@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pl.d30.binClock"
-    android:versionCode="16"
-    android:versionName="0.4.6" >
+    android:versionCode="17"
+    android:versionName="0.4.6.1" >
 
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="16" />
-
-    <uses-feature
-        android:name="andreoid.software.live_wallpaper"
-        android:required="false" />
 
     <application
         android:icon="@drawable/icon"
@@ -39,44 +35,6 @@
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
-        </activity>
-
-        <!-- LIVE WALLPAPER -->
-        <service
-            android:name="pl.d30.binClock.wallpaper.BinaryWallpaperService"
-            android:enabled="true"
-            android:label="@string/app_name"
-            android:permission="android.permission.BIND_WALLPAPER" >
-            
-            <intent-filter>
-                <action android:name="android.service.wallpaper.WallpaperService" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.service.wallpaper"
-                android:resource="@xml/wallpaper_info" >
-            </meta-data>
-            
-        </service>
-
-        <activity
-            android:name="pl.d30.binClock.wallpaper.BinaryWallpaperConfiguration"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Light.WallpaperSettings" >
-        </activity>
-        
-        <!-- APPLICATION -->
-        <activity
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:name="pl.d30.binClock.app.BinaryWidgetActivity"
-            android:label="@string/app_name">
-            
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            
         </activity>
         
     </application>

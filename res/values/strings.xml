@@ -33,10 +33,4 @@
         <item>Click on the widget for quick access to Alarm Clock</item>
     </string-array>
 
-    <!-- APP -->
-    <string name="hello_world">Here goes the clock!</string>
-    <string name="menu_settings">Settings</string>
-    
-    <string name="stayawake_toggle">Toggle Screen Dimming</string>
-
 </resources>
