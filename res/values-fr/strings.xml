@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="loading">Ton Widget est en train de charger&#8230;</string>
+    <string name="app_name">Horloge binaire</string>
+    <string name="app_desc">Binary Clock Description</string>
+    <string name="on">Allumé</string>
+    <string name="off">Eteind</string>
+    <string name="empty">Vide</string>
+
+    <!-- Widget Configuration -->
+    <string name="legacy_done">Appuie sur retour pour sauvgarder les options et ajouter le widget</string>
+    
+	<string name="settings_basic">Basique</string>
+	    <string name="seconds_title">Secondes</string>
+	    <string name="seconds_summaryOn">Seront affichés</string>
+	    <string name="seconds_summaryOff">Cachée</string>
+	    <string name="skin_title">Thème</string>
+	    <string name="skin_summary">Choisi le thème de base</string>
+    
+	<string name="settings_advanced">Avancé</string>
+	    <string name="background_title">Fond</string>
+	    <string name="background_summary">Choisi ta couleur préférée</string>
+	    <string name="compact_title">Binarise de nombres entiers</string>
+	    <string name="compactOn_summary">Chaque numéro sera une colonne</string>
+	    <string name="compactOff_summary">Chaque chiffre sera une colonne</string>
+	    <string name="digitalClock_title">Montre l\'horloge digitale</string>
+	    <string name="digitalClock_summary">Ne coche pas ceci si tu ne sais pas conter jusqu\'à 24 (pas de mode am/pm)</string>
+    
+    <string name="menu_done">Sauvgarde</string>
+
+    <string-array name="random_tip">
+        <item>Appuie sur le widget pour aller rapidement aux options du reveil </item>
+    </string-array>
+
+    <!-- APP -->
+    <string name="hello_world">Here goes the clock!</string>
+    <string name="menu_settings">Settings</string>
+    
+    <string name="stayawake_toggle">Toggle Screen Dimming</string>
+
+</resources>
