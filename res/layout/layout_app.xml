@@ -1,16 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+  	android:gravity="center"
     android:keepScreenOn="true"
     android:onClick="toggleActive"
     tools:context=".app.BinaryWidgetActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world" />
+    <include android:id="@+id/hours"
+		layout="@layout/one_block"
+		style="@style/block_style" />
     
+    <include android:id="@+id/minutes"
+		layout="@layout/one_block" 
+		style="@style/block_style"
+		android:layout_toRightOf="@id/hours" />
+    
+    <include android:id="@+id/seconds"
+		layout="@layout/one_block"
+		style="@style/block_style"
+		android:layout_toRightOf="@id/minutes" />
+        
 </RelativeLayout>
