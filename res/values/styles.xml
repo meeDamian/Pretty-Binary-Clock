@@ -6,22 +6,38 @@
         <item name="android:layout_height">wrap_content</item>   
     </style>
     
-    <style name="bymatko_null">
+    <!-- Common base for all bits -->
+    <style name="bit_null">
         <item name="android:layout_width">18dp</item>
         <item name="android:layout_height">18dp</item>
         <item name="android:layout_margin">6dp</item>
         <item name="android:src">@null</item>
         <item name="android:contentDescription">@string/empty</item>
     </style> 
-    
-    <style name="bymatko_on" parent="@style/bymatko_null">
-        <item name="android:src">@drawable/bymatko_black_on</item>
+    <style name="bit_on" parent="bit_null">
         <item name="android:contentDescription">@string/on</item>
     </style>
-    
-    <style name="bymatko_off" parent="@style/bymatko_null">
-        <item name="android:src">@drawable/bymatko_black_off</item>
+    <style name="bit_off" parent="bit_null">
         <item name="android:contentDescription">@string/off</item>
+    </style>
+    
+    <!-- BYMATKO THEME -->
+    <style name="bymatko_null" parent="@style/bit_null" />
+
+    <style name="bymatko_black_on" parent="@style/bit_on">
+        <item name="android:src">@drawable/bymatko_black_on</item>
+    </style>
+    
+    <style name="bymatko_black_off" parent="@style/bit_off">
+        <item name="android:src">@drawable/bymatko_black_off</item>
+    </style>
+    
+    <style name="bymatko_white_on" parent="@style/bit_on">
+        <item name="android:src">@drawable/bymatko_white_on</item>
+    </style>
+    
+    <style name="bymatko_white_off" parent="@style/bit_off">
+        <item name="android:src">@drawable/bymatko_white_off</item>
     </style>
     
 </resources>
