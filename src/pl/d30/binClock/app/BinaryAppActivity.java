@@ -8,8 +8,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 
 public class BinaryAppActivity extends Activity {
@@ -21,15 +21,16 @@ public class BinaryAppActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		newAndroid = ( Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB ) ? true : false;		
-		requestWindowFeature( Window.FEATURE_NO_TITLE );		
+		newAndroid = ( Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB ) ? true : false;				
 		sp = getSharedPreferences( PREF_NAME + "app", Context.MODE_PRIVATE );
 		
 		setContentView(R.layout.layout_app);
 		
-		getWindow().addFlags( WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON );		
-		setActive( true );	
-		
+		getWindow().addFlags( WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON );			
+	}
+	protected void onStart() {
+		super.onStart();
+		setActive(true);
 	}
 	
 	public void toggleActive(View v) {
