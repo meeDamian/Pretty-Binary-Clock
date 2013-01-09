@@ -40,9 +40,7 @@ public class BinaryWidgetConfiguration extends PreferenceActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.d(LOG, "Config.onCreate();");
-		
-		
-		
+
 		Intent i = getIntent();
 		Bundle extras = i.getExtras();
 		if( extras!=null ) widgetID = extras.getInt( AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID );

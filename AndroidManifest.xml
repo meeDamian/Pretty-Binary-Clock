@@ -6,10 +6,10 @@
 
     <uses-sdk
         android:minSdkVersion="7"
-        android:targetSdkVersion="16" />
+        android:targetSdkVersion="17" />
 
     <uses-feature
-        android:name="andreoid.software.live_wallpaper"
+        android:name="android.software.live_wallpaper"
         android:required="false" />
 
     <application
@@ -35,7 +35,7 @@
             
         </receiver>
 
-        <activity android:name="pl.d30.binClock.widget.BinaryWidgetConfiguration" >
+        <activity android:name="pl.d30.binClock.widget.BinaryWidgetConfiguration">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>

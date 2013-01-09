@@ -61,11 +61,9 @@ public class BinaryWidgetReceiver extends BroadcastReceiver {
 		int[] allIds = awm.getAppWidgetIds( thisWidget );
 		
 		if( allIds==null ) {
-
 			Log.wtf(LOG, "Alarm is running with no widgets added.");
 
 		} else if( allIds!=null ) {
-
 			RemoteViews rv;
 			
 			// for each widget added on screen

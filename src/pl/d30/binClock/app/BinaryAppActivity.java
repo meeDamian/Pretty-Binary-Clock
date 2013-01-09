@@ -39,6 +39,7 @@ public class BinaryAppActivity extends Activity {
 	private void toggleActive() {		
 		setActive( !sp.getBoolean("active", true) );	
 	}
+
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	private void setActive(Boolean active) {
 		
