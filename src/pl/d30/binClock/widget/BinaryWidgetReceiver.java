@@ -6,8 +6,9 @@ import static pl.d30.binClock.BinaryClockCore.OFF_ID;
 import static pl.d30.binClock.BinaryClockCore.ON_ID;
 import static pl.d30.binClock.BinaryClockCore.PREF_NAME;
 import static pl.d30.binClock.BinaryClockCore.WIDGET;
-import static pl.d30.binClock.BinaryClockCore.processProperties;
+import static pl.d30.binClock.BinaryClockCore.LOG;
 import static pl.d30.binClock.BinaryClockCore.logWTF;
+import static pl.d30.binClock.BinaryClockCore.processProperties;
 
 import java.util.Calendar;
 
@@ -23,6 +24,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 public class BinaryWidgetReceiver extends BroadcastReceiver {
@@ -45,7 +47,7 @@ public class BinaryWidgetReceiver extends BroadcastReceiver {
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		// Log.d(LOG,"Receiver.onReceive()");
+		//Log.d(LOG,"Receiver.onReceive()");
 
 		Calendar nao = Calendar.getInstance();
 		
@@ -91,8 +93,7 @@ public class BinaryWidgetReceiver extends BroadcastReceiver {
 						}
 					}
 					
-				}
-				
+				}				
 				
 				// TODO: check if this assigning of a click cannot be moved somewhere else (someplace it won't be executed every second...)
 				PackageManager pm = context.getPackageManager();
@@ -117,6 +118,7 @@ public class BinaryWidgetReceiver extends BroadcastReceiver {
 					// TODO: show Toast saying: "To change widget proporties just dump this and add new one!" after 1, 3, 10, 30, 100 click
 
 					try {
+						// TODO: once the proper intent has been found - cache it for quicker access next time. 
 						ComponentName cn = new ComponentName( packageName, className );
 						pm.getActivityInfo( cn, PackageManager.GET_META_DATA );
 						alarmClockIntent.setComponent( cn );
