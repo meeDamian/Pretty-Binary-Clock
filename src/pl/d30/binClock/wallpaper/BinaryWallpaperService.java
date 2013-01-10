@@ -40,7 +40,7 @@ public class BinaryWallpaperService extends WallpaperService {
 			
 			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(BinaryWallpaperService.this);
 			maxNumber = Integer.valueOf(prefs.getString("numberOfCircles", "4"));
-			touchEnabled = prefs.getBoolean("touch",false);
+			touchEnabled = prefs.getBoolean("touch", false);
 			circles = new ArrayList<MyPoint>();
 			
 			paint.setAntiAlias(true);
