@@ -3,8 +3,8 @@
     
     <!-- for skins -->
     <string-array name="skins_list">
-        <item>Los ruedas (by Matko)</item>
-        <item>Los cuadrados (by Maurycy)</item>
+        <item>Círculos (por Matko)</item>
+        <item>Cuadrados (por Maurycy)</item>
     </string-array>
     <string-array name="skins_values">
         <item>0</item>
@@ -13,9 +13,9 @@
     
     <!-- for backgrounds -->
     <string-array name="background_list">
-        <item>Falta</item>
-        <item>Negros (Defecto)</item>
-        <item>Blancos</item>
+        <item>Ninguno</item>
+        <item>Negro (por defecto)</item>
+        <item>Blanco</item>
     </string-array>
     <string-array name="background_values">
         <item>0</item>
