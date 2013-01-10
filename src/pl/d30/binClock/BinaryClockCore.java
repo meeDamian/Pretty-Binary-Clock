@@ -2,7 +2,10 @@ package pl.d30.binClock;
 
 import java.util.Calendar;
 
+import android.annotation.TargetApi;
 import android.content.SharedPreferences;
+import android.os.Build;
+import android.util.Log;
 
 public class BinaryClockCore {
 
@@ -115,6 +118,14 @@ public class BinaryClockCore {
 		} else preferences[ INTERVAL ] = SECOND;
 		
 		return preferences;
+	}
+	
+	@TargetApi(Build.VERSION_CODES.FROYO)
+	public static void logWTF(String msg) {
+		
+		if( Build.VERSION.SDK_INT>= Build.VERSION_CODES.FROYO ) Log.wtf(LOG, msg);
+		else Log.e(LOG, msg);
+		
 	}
 	
 	

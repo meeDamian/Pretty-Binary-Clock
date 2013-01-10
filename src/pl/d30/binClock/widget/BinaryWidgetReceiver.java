@@ -1,13 +1,13 @@
 package pl.d30.binClock.widget;
 
-import static pl.d30.binClock.BinaryClockCore.WIDGET;
 import static pl.d30.binClock.BinaryClockCore.BACKGROUND_ID;
 import static pl.d30.binClock.BinaryClockCore.LAYOUT_ID;
-import static pl.d30.binClock.BinaryClockCore.LOG;
 import static pl.d30.binClock.BinaryClockCore.OFF_ID;
 import static pl.d30.binClock.BinaryClockCore.ON_ID;
 import static pl.d30.binClock.BinaryClockCore.PREF_NAME;
+import static pl.d30.binClock.BinaryClockCore.WIDGET;
 import static pl.d30.binClock.BinaryClockCore.processProperties;
+import static pl.d30.binClock.BinaryClockCore.logWTF;
 
 import java.util.Calendar;
 
@@ -23,7 +23,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
-import android.util.Log;
 import android.widget.RemoteViews;
 
 public class BinaryWidgetReceiver extends BroadcastReceiver {
@@ -43,7 +42,7 @@ public class BinaryWidgetReceiver extends BroadcastReceiver {
 		{ R.id.s0_8, R.id.s0_4, R.id.s0_2, R.id.s0_1 }		
 	};
 
-	@TargetApi(11)
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// Log.d(LOG,"Receiver.onReceive()");
@@ -61,7 +60,8 @@ public class BinaryWidgetReceiver extends BroadcastReceiver {
 		int[] allIds = awm.getAppWidgetIds( thisWidget );
 		
 		if( allIds==null ) {
-			Log.wtf(LOG, "Alarm is running with no widgets added.");
+			logWTF("Alarm is running with no widgets added.");
+			// TODO: stop alarm
 
 		} else if( allIds!=null ) {
 			RemoteViews rv;
