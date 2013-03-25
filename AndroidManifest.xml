@@ -54,8 +54,7 @@
 
             <meta-data
                 android:name="android.service.wallpaper"
-                android:resource="@xml/wallpaper_info" >
-            </meta-data>
+                android:resource="@xml/wallpaper_info" />
             
         </service>
 
