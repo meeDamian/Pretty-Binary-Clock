@@ -7,8 +7,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 19
-        versionCode 18
-        versionName "0.4.7"
+        versionCode 19
+        versionName "0.5"
     }
 
     compileOptions {
@@ -35,19 +35,19 @@ android {
                     parent = OUTPUT_DIR
 
                 variant.outputFile = new File(
-                parent,
-                (String) file.name.replace(
-                    ".apk",
-                    "-" + defaultConfig.versionName + "-build" + defaultConfig.versionCode + ".apk"
-                )
+                    parent,
+                    (String) file.name.replace(
+                        ".apk",
+                        "-" + defaultConfig.versionName + "-build" + defaultConfig.versionCode + ".apk"
+                    )
                 )
             }
         }
     }
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
-    compile 'com.google.android.gms:play-services:+'
-}
+//dependencies {
+//    compile fileTree(dir: 'libs', include: ['*.jar'])
+//
+//    compile 'com.google.android.gms:play-services:+'
+//}
