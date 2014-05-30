@@ -3,40 +3,22 @@
 
     <string name="loading">Your widget is loading&#8230;</string>
     <string name="app_name">Binary Clock</string>
-    <string name="app_desc">Binary Clock Description</string>
+
     <string name="on">On</string>
     <string name="off">Off</string>
     <string name="empty">Empty</string>
 
-    <!-- Widget Configuration -->
-    <string name="legacy_done">Press back to save settings and add widget</string>
-    
-	<string name="settings_basic">Basic</string>
-	    <string name="seconds_title">Seconds</string>
-	    <string name="seconds_summaryOn">Displayed</string>
-	    <string name="seconds_summaryOff">Hidden</string>
-	    <string name="skin_title">Theme</string>
-	    <string name="skin_summary">Choose base theme</string>
-    
-	<string name="settings_advanced">Advanced</string>
-	    <string name="background_title">Background</string>
-	    <string name="background_summary">Pick color you like</string>
-	    <string name="compact_title">Binarize Entire Numbers</string>
-	    <string name="compactOn_summary">Each number will be one column</string>
-	    <string name="compactOff_summary">Each digit will be a column</string>
-	    <string name="digitalClock_title">Show Digital Clock</string>
-	    <string name="digitalClock_summary">Do not enable it if you can\'t count to 24 (no am/pm mode)</string>
+    <string name="seconds_title">Seconds</string>
+    <string name="seconds_summaryOn">Displayed</string>
+    <string name="seconds_summaryOff">Hidden</string>
+
+    <string name="background_title">Background</string>
+    <string name="background_summary">Pick color you like</string>
+
+    <string name="compact_title">BCD notation</string>
+    <string name="compactOn_summary">Each number is one column</string>
+    <string name="compactOff_summary">Each digit is a column</string>
     
     <string name="menu_done">Done</string>
-
-    <string-array name="random_tip">
-        <item>Click on the widget for quick access to Alarm Clock</item>
-    </string-array>
-
-    <!-- APP -->
-    <string name="hello_world">Here goes the clock!</string>
-    <string name="menu_settings">Settings</string>
-    
-    <string name="stayawake_toggle">Toggle Screen Dimming</string>
 
 </resources>

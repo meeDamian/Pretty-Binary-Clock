@@ -7,30 +7,30 @@
             style="@style/bit_null"
             android:visibility="invisible" />
         <ImageView android:id="@+id/u0_8"
-            style="@style/bymatko_black_off"
+            style="@style/circles_black_off"
             android:layout_toRightOf="@id/u1_8" />
         
         <ImageView android:id="@+id/u1_4" 
-            style="@style/bymatko_black_off"
+            style="@style/circles_black_off"
             android:layout_below="@id/u1_8"/>
         <ImageView android:id="@+id/u0_4"
-            style="@style/bymatko_black_off"
+            style="@style/circles_black_off"
             android:layout_below="@id/u0_8"
             android:layout_toRightOf="@id/u1_4" />
         
         <ImageView android:id="@+id/u1_2"
-            style="@style/bymatko_black_off"
+            style="@style/circles_black_off"
             android:layout_below="@id/u1_4"  />
         <ImageView android:id="@+id/u0_2"
-            style="@style/bymatko_black_off"
+            style="@style/circles_black_off"
             android:layout_below="@id/u0_4"
             android:layout_toRightOf="@id/u1_2" />
         
         <ImageView android:id="@+id/u1_1"
-            style="@style/bymatko_black_off"            
+            style="@style/circles_black_off"
             android:layout_below="@id/u1_2" />        
         <ImageView android:id="@+id/u0_1"
-            style="@style/bymatko_black_off"
+            style="@style/circles_black_off"
 			android:layout_below="@id/u0_2"
 			android:layout_toRightOf="@id/u1_1" />
                 

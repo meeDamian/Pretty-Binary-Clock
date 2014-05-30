@@ -53,3 +53,5 @@ proguard_logs/
 *.ipr
 *.iws
 .idea/
+
+gradle.properties

@@ -20,24 +20,23 @@
     <style name="bit_off" parent="bit_null">
         <item name="android:contentDescription">@string/off</item>
     </style>
-    
-    <!-- BYMATKO THEME -->
-    <style name="bymatko_null" parent="@style/bit_null" />
 
-    <style name="bymatko_black_on" parent="@style/bit_on">
-        <item name="android:src">@drawable/bymatko_black_on</item>
+    <style name="circles_null" parent="@style/bit_null" />
+
+    <style name="circles_black_on" parent="@style/bit_on">
+        <item name="android:src">@drawable/black_on</item>
     </style>
     
-    <style name="bymatko_black_off" parent="@style/bit_off">
-        <item name="android:src">@drawable/bymatko_black_off</item>
+    <style name="circles_black_off" parent="@style/bit_off">
+        <item name="android:src">@drawable/black_off</item>
     </style>
     
-    <style name="bymatko_white_on" parent="@style/bit_on">
-        <item name="android:src">@drawable/bymatko_white_on</item>
+    <style name="circles_white_on" parent="@style/bit_on">
+        <item name="android:src">@drawable/white_on</item>
     </style>
     
-    <style name="bymatko_white_off" parent="@style/bit_off">
-        <item name="android:src">@drawable/bymatko_white_off</item>
+    <style name="circles_white_off" parent="@style/bit_off">
+        <item name="android:src">@drawable/white_off</item>
     </style>
     
 </resources>

@@ -1,60 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory 
-        android:title="@string/settings_basic"
-        android:key="basic">
-        
-        <!-- Widget & Live Wallpaper & App -->
-        <CheckBoxPreference
-        	android:key="seconds"
-	        android:title="@string/seconds_title"
-	        android:summaryOn="@string/seconds_summaryOn"
-	        android:summaryOff="@string/seconds_summaryOff"
-	        android:defaultValue="true" />
-	   
-        <!-- Widget & Live Wallpaper & App -->
-	   	<ListPreference 
-	        android:key="skin"
-	        android:title="@string/skin_title"
-	        android:summary="@string/skin_summary"
-	        android:entries="@array/skins_list"
-	        android:entryValues="@array/skins_values"
-	        android:defaultValue="0" />
-        
-    </PreferenceCategory>
-    
-    <PreferenceCategory 
-        android:title="@string/settings_advanced"
-        android:key="advanced">
-	   	
-        <!-- Widget & Live Wallpaper & App (but depending on entity options may vary) -->
-        <ListPreference 
-	        android:key="background"
-	        android:title="@string/background_title"
-	        android:summary="@string/background_summary"
-	        android:entries="@array/background_list" 
-	        android:entryValues="@array/background_values"
-	        android:defaultValue="1" />
-	   	
-        <!-- Widget & Live Wallpaper & App -->
-        <!-- TODO: rename to BCD -->
-        <CheckBoxPreference
-        	android:key="compact"
-	        android:title="@string/compact_title"
-	        android:summaryOn="@string/compactOn_summary"
-	        android:summaryOff="@string/compactOff_summary"
-	        android:defaultValue="false"
-        	android:enabled="false" />
-        
-        <!-- Widget & Live Wallpaper & App -->	   	
-	   	<CheckBoxPreference 
-	   	    android:key="digital_clock"
-	   	    android:title="@string/digitalClock_title"
-	   	    android:summary="@string/digitalClock_summary"
-	   	    android:defaultValue="false"
-        	android:enabled="false" />
-        
-    </PreferenceCategory>
+    <ListPreference
+        android:key="background"
+        android:title="@string/background_title"
+        android:summary="@string/background_summary"
+        android:entries="@array/background_list"
+        android:entryValues="@array/background_values"
+        android:defaultValue="0" />
+
+    <CheckBoxPreference
+        android:key="compact"
+        android:title="@string/compact_title"
+        android:summaryOn="@string/compactOn_summary"
+        android:summaryOff="@string/compactOff_summary"
+        android:defaultValue="false"
+        android:enabled="false" />
 
 </PreferenceScreen>
