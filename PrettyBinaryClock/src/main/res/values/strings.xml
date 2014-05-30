@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="loading">Your widget is loading&#8230;</string>
     <string name="app_name">Binary Clock</string>
 
     <string name="on">On</string>
     <string name="off">Off</string>
     <string name="empty">Empty</string>
-
-    <string name="seconds_title">Seconds</string>
-    <string name="seconds_summaryOn">Displayed</string>
-    <string name="seconds_summaryOff">Hidden</string>
 
     <string name="background_title">Background</string>
     <string name="background_summary">Pick color you like</string>
@@ -20,5 +15,4 @@
     <string name="compactOff_summary">Each digit is a column</string>
     
     <string name="menu_done">Done</string>
-
 </resources>

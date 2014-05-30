@@ -6,7 +6,7 @@
         <item>Black</item>
         <item>White</item>
     </string-array>
-    <string-array name="background_values">
+    <string-array name="background_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>

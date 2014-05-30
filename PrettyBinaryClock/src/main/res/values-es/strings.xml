@@ -6,33 +6,13 @@
     <string name="on">Encendido</string>
     <string name="off">Apagado</string>
     <string name="empty">Vacío</string>
-    
-    <!-- Widget Configuration -->
-    <string name="legacy_done">Presiona atrás para guardar los ajustes y añadir el widget</string>
-    
-    <string name="settings_basic">Básico</string>
-	    <string name="seconds_title">Segundos</string>
-	    <string name="seconds_summaryOn">Mostrar</string>
-	    <string name="seconds_summaryOff">Esconder</string>
-	    
-	    <string name="skin_title">Tema</string>
-	    <string name="skin_summary">Elige un tema principal</string>
 
-	<string name="settings_advanced">Avanzado</string>
-	    <string name="background_title">Fondo</string>
-	    <string name="background_summary">Elige un color que te guste</string>
-	    
-		<string name="compact_title">Binarizar todos los números</string>
-	    <string name="compactOn_summary">Cada número es una columna</string>
-	    <string name="compactOff_summary">Cada cifra es una columna</string>
-	    	    
-	    <string name="digitalClock_title">Mostrar reloj digital</string>
-	    <string name="digitalClock_summary">No marque esta opción si no puede contar hasta 24 (sin modo am/pm)</string>
+    <string name="background_title">Fondo</string>
+    <string name="background_summary">Elige un color que te guste</string>
+
+    <string name="compact_title">Binarizar todos los números</string>
+    <string name="compactOn_summary">Cada número es una columna</string>
+    <string name="compactOff_summary">Cada cifra es una columna</string>
     
     <string name="menu_done">Guardar</string>
-    
-    <string-array name="random_tip">
-        <item>Haga clic en el widget para ajustar la alarma</item>
-    </string-array>
-    
 </resources>
