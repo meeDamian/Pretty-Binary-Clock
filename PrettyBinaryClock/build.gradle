@@ -6,10 +6,10 @@ android {
 
     defaultConfig {
         applicationId 'pl.d30.binClock'
-        minSdkVersion 10
+        minSdkVersion 15
         targetSdkVersion 21
-        versionCode 20
-        versionName "0.6"
+        versionCode 21
+        versionName "0.6.1"
     }
 
     compileOptions {
@@ -27,6 +27,9 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
+            minifyEnabled true
+            zipAlignEnabled true
+            // shrinkResources true
 
             android.applicationVariants.all { variant ->
                 variant.outputs.each { output ->
