@@ -1,15 +1,15 @@
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1"
+    compileSdkVersion 21
+    buildToolsVersion "21.1.1"
 
     defaultConfig {
         applicationId 'pl.d30.binClock'
-        minSdkVersion 15
-        targetSdkVersion 19
-        versionCode 19
-        versionName "0.5"
+        minSdkVersion 10
+        targetSdkVersion 21
+        versionCode 20
+        versionName "0.6"
     }
 
     compileOptions {
@@ -28,27 +28,25 @@ android {
         release {
             signingConfig signingConfigs.release
 
-            applicationVariants.all { variant ->
-                def file = variant.outputFile
+            android.applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    if (output.name == "release") {
+                        def file = output.outputFile
+                        String parent = file.parent
 
-                String parent = file.parent
-                if( project.hasProperty('OUTPUT_DIR') && new File( (String)OUTPUT_DIR ).exists() )
-                    parent = OUTPUT_DIR
+                        if (project.hasProperty('OUTPUT_DIR') && new File(OUTPUT_DIR as String).exists())
+                            parent = OUTPUT_DIR
 
-                variant.outputFile = new File(
-                    parent,
-                    (String) file.name.replace(
-                        ".apk",
-                        "-" + defaultConfig.versionName + "-build" + defaultConfig.versionCode + ".apk"
-                    )
-                )
+                        output.outputFile = new File(
+                            parent,
+                            file.name.replace(
+                                ".apk",
+                                "-" + (defaultConfig.versionName as String) + "-build" + (defaultConfig.versionCode as String) + ".apk"
+                            ) as String
+                        )
+                    }
+                }
             }
         }
     }
 }
-
-//dependencies {
-//    compile fileTree(dir: 'libs', include: ['*.jar'])
-//
-//    compile 'com.google.android.gms:play-services:+'
-//}
