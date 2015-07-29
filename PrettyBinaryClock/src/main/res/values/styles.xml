@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-    
-    <style name="block_style">
-    	<item name="android:layout_width">60dp</item>
-        <item name="android:layout_height">wrap_content</item>   
-    </style>
-    
-    <!-- Common base for all bits -->
-    <style name="bit_null">
-        <item name="android:layout_width">18dp</item>
-        <item name="android:layout_height">18dp</item>
-        <item name="android:layout_margin">6dp</item>
-        <item name="android:src">@null</item>
-        <item name="android:contentDescription">@string/empty</item>
-    </style> 
-    <style name="bit_on" parent="bit_null">
-        <item name="android:contentDescription">@string/on</item>
-    </style>
-    <style name="bit_off" parent="bit_null">
-        <item name="android:contentDescription">@string/off</item>
-    </style>
-
-    <style name="circles_null" parent="@style/bit_null" />
-
-
+<resources>
     <style name="MyTheme" parent="@android:style/Theme.Holo">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
     </style>
@@ -31,5 +7,4 @@
     <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
         <item name="android:displayOptions">showHome|homeAsUp|showTitle</item>
     </style>
-    
 </resources>

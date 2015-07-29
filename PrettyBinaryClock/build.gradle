@@ -58,4 +58,6 @@ android {
 
 dependencies {
     compile 'com.android.support:support-annotations:22.2.1'
+    compile 'com.anjlab.android.iab.v3:library:1.0.26@aar'
+    compile 'com.github.QuadFlask:colorpicker:0.0.9'
 }

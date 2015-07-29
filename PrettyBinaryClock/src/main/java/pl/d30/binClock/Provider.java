@@ -4,9 +4,9 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -95,8 +95,8 @@ public class Provider extends AppWidgetProvider {
                         int dotId = BIT[2 * group + j][i];
                         rv.setInt(
                             dotId,
-                            "setAlpha",
-                            w.getAlpha(!bt.get(group, 2 - j)[i])
+                            getRightAlphaKey(),
+                            w.getAlpha(bt.get(group, 2 - j)[i])
                         );
                         rv.setInt(
                             dotId,
@@ -107,5 +107,11 @@ public class Provider extends AppWidgetProvider {
 
             awm.updateAppWidget(w.getId(), rv);
         }
+    }
+
+    private static String getRightAlphaKey() {
+         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN
+             ? "setImageAlpha"
+             : "setAlpha";
     }
 }

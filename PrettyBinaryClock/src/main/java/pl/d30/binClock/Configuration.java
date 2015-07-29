@@ -3,22 +3,31 @@ package pl.d30.binClock;
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.anjlab.android.iab.v3.BillingProcessor;
+import com.anjlab.android.iab.v3.TransactionDetails;
 
 import static android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_ID;
 import static android.appwidget.AppWidgetManager.INVALID_APPWIDGET_ID;
 import static pl.d30.binClock.ClockService.sendToService;
 
-public class Configuration extends PreferenceActivity {
+public class Configuration extends PreferenceActivity implements BillingProcessor.IBillingHandler {
+
+	private BillingProcessor bp;
 
 	private int widgetId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+		bp = new BillingProcessor(this, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtQNvm3LK3qekOoo78aJIrrttSB4ZBdSPaUtbTSKSKKh4WS65guzavw1uLBE/sNcncPCLg9umWedvNeis++6gaxCQqTBT58RFsSjAap5zcbAWOpAD5UHrcmXt9DIKv66gcXtYEeTbRKPuoaSLWyoeng9O91TQjnHaPDkV0VgyFhN3GYY1eqrTCMRi9NnNiHvrKTV2HwFhtcbYpxU+W2ypSDfI5Sevs2s+GubCcyC3t850phVJe+qH1lDZPAmoxulWChTdNjyHR5WFQ6b6LSGv4gmgK0NlpMTJCa/7XpROlxXF18IhdjTgDC7lHjKK7DtC0E0beVrYv5jUAhZLkG18lQIDAQAB", this);
 
 		Bundle extras = getIntent().getExtras();
 
@@ -79,6 +88,40 @@ public class Configuration extends PreferenceActivity {
 		return true;
 	}
 
+	@Override
+	public void onProductPurchased(String s, TransactionDetails transactionDetails) {
+
+	}
+
+	@Override
+	public void onPurchaseHistoryRestored() {
+
+	}
+
+	@Override
+	public void onBillingError(int i, Throwable throwable) {
+
+	}
+
+	@Override
+	public void onBillingInitialized() {
+
+	}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (!bp.handleActivityResult(requestCode, resultCode, data))
+            super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onDestroy() {
+        if (bp != null)
+            bp.release();
+
+        super.onDestroy();
+    }
+
 	public static class BinaryWidgetSettings extends PreferenceFragment {
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
@@ -92,7 +135,34 @@ public class Configuration extends PreferenceActivity {
 			getPreferenceManager().setSharedPreferencesName(Widget.getPrefsName(widgetId));
 			
 			addPreferencesFromResource(R.xml.preferences);
-		}
-	}
 
+            setPremium(true);
+		}
+
+        private void setPremium(boolean isPremium) {
+            Preference premium = findPreference("premium");
+
+            if (isPremium) getPreferenceScreen().removePreference(premium);
+            else {
+                premium.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference preference) {
+                    showBuyPremiumDialog();
+                    return false;
+                    }
+                });
+            }
+
+            Preference dotColor = findPreference("dotColor");
+            dotColor.setEnabled(isPremium);
+        }
+
+        private void showBuyPremiumDialog() {
+            toast("buy premium");
+        }
+
+        private void toast(String text) {
+            Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+        }
+	}
 }

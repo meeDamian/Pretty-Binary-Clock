@@ -6,5 +6,6 @@
 
     <style name="MyActionBar" parent="@android:style/Widget.Material.ActionBar">
         <item name="android:displayOptions">showHome|homeAsUp|showTitle</item>
+        <item name="android:icon">@android:color/transparent</item>
     </style>
 </resources>

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- preferences, alarm clock, other app -->
-    <!--<ListPreference-->
-        <!--android:key="intent"-->
-        <!--android:title="Clicking the widget launches..." />-->
+    <Preference
+        android:key="premium"
+        android:title="Unlock everything"
+        android:summary="See what goodies premium gives you"
+        android:icon="@drawable/ic_shop_white_36dp" />
 
     <ListPreference
         android:key="background"
@@ -13,6 +15,15 @@
         android:entries="@array/background_list"
         android:entryValues="@array/values_three"
         android:defaultValue="0" />
+
+    <pl.d30.binClock.ColorPickerPreference
+        android:key="dotColor"
+        android:title="Dots color"
+        app:pickerTitle="Choose dots color"
+        app:alphaSlider="true"
+        app:density="8"
+        app:initialColor="0xffff0000"
+        app:lightnessSlider="true" />
 
     <CheckBoxPreference
         android:key="seconds"
