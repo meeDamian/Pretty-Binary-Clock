@@ -23,20 +23,13 @@
 
     <style name="circles_null" parent="@style/bit_null" />
 
-    <style name="circles_black_on" parent="@style/bit_on">
-        <item name="android:src">@drawable/black_on</item>
+
+    <style name="MyTheme" parent="@android:style/Theme.Holo">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
     </style>
-    
-    <style name="circles_black_off" parent="@style/bit_off">
-        <item name="android:src">@drawable/black_off</item>
-    </style>
-    
-    <style name="circles_white_on" parent="@style/bit_on">
-        <item name="android:src">@drawable/white_on</item>
-    </style>
-    
-    <style name="circles_white_off" parent="@style/bit_off">
-        <item name="android:src">@drawable/white_off</item>
+
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:displayOptions">showHome|homeAsUp|showTitle</item>
     </style>
     
 </resources>

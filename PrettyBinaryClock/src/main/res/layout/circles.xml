@@ -1,259 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/master_exploder"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="center">
-        
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/master_exploder"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              tools:ignore="ContentDescription,RtlHardcoded">
+
     <RelativeLayout android:id="@+id/hours"
-        android:layout_height="wrap_content"
-        android:layout_width="60dp">
-        
-        <ImageView android:id="@+id/h1_8" 
-            android:layout_height="@dimen/bit"
-            android:layout_width="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            android:contentDescription="@string/empty"
-            android:src="@null" 
-            android:visibility="invisible" />
+                    android:layout_height="wrap_content"
+                    android:layout_width="60dp">
+
+        <ImageView android:id="@+id/h1_8"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+                   android:src="@null"
+                   android:visibility="invisible" />
         <ImageView android:id="@+id/h0_8"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-            android:layout_toRightOf="@id/h1_8"
-            
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
-        
-        <ImageView android:id="@+id/h1_4" 
-            android:layout_height="@dimen/bit"
-            android:layout_width="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-            android:layout_below="@id/h1_8"
-            
-            android:contentDescription="@string/empty"
-            android:src="@null" 
-            android:visibility="invisible" />
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:layout_toRightOf="@id/h1_8"
+
+                   android:src="@drawable/blank"/>
+
+        <ImageView android:id="@+id/h1_4"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:layout_below="@id/h1_8"
+
+                   android:src="@null"
+                   android:visibility="invisible" />
         <ImageView android:id="@+id/h0_4"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-            android:layout_below="@id/h0_8"
-            android:layout_toRightOf="@id/h1_4"
-            
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
-        
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:layout_below="@id/h0_8"
+                   android:layout_toRightOf="@id/h1_4"
+
+                   android:src="@drawable/blank" />
+
         <ImageView android:id="@+id/h1_2"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
 
-            android:layout_below="@id/h1_4"
-            
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
+                   android:layout_below="@id/h1_4"
+
+                   android:src="@drawable/blank" />
         <ImageView android:id="@+id/h0_2"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
 
-            android:layout_below="@id/h0_4"
-            android:layout_toRightOf="@id/h1_2"
-            
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
-        
+                   android:layout_below="@id/h0_4"
+                   android:layout_toRightOf="@id/h1_2"
+
+                   android:src="@drawable/blank" />
+
         <ImageView android:id="@+id/h1_1"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-            android:layout_below="@id/h1_2"
-            
-            android:contentDescription="@string/off"
-            android:src="@drawable/black_off" />
-        <ImageView android:id="@+id/h0_1"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-			android:layout_below="@id/h0_2"
-			android:layout_toRightOf="@id/h1_1"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
 
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
-                
+                   android:layout_below="@id/h1_2"
+
+                   android:src="@drawable/blank" />
+        <ImageView android:id="@+id/h0_1"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:layout_below="@id/h0_2"
+                   android:layout_toRightOf="@id/h1_1"
+
+                   android:src="@drawable/blank" />
+
     </RelativeLayout>
 
     <RelativeLayout android:id="@+id/minutes"
-        android:layout_height="wrap_content"
-        android:layout_width="60dp"
-        android:layout_toRightOf="@id/hours">
-        
-        <ImageView android:id="@+id/m1_8" 
-            android:layout_height="@dimen/bit"
-            android:layout_width="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            android:contentDescription="@string/empty"
-            android:src="@null" 
-            android:visibility="invisible" />
+                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_toRightOf="@id/hours">
+
+        <ImageView android:id="@+id/m1_8"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+                   android:src="@null"
+                   android:visibility="invisible" />
         <ImageView android:id="@+id/m0_8"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-            android:layout_toRightOf="@id/m1_8"
-            
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
-        
-        <ImageView android:id="@+id/m1_4" 
-            android:layout_height="@dimen/bit"
-            android:layout_width="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-            android:layout_below="@id/m1_8"
-            
-            android:contentDescription="@string/empty"
-            android:src="@drawable/black_off" />
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:layout_toRightOf="@id/m1_8"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/m1_4"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:layout_below="@id/m1_8"
+
+                   android:src="@drawable/blank" />
         <ImageView android:id="@+id/m0_4"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-            android:layout_below="@id/m0_8"
-            android:layout_toRightOf="@id/m1_4"
-            
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
-        
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:layout_below="@id/m0_8"
+                   android:layout_toRightOf="@id/m1_4"
+
+                   android:src="@drawable/blank" />
+
         <ImageView android:id="@+id/m1_2"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
 
-            android:layout_below="@id/m1_4"
-            
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
+                   android:layout_below="@id/m1_4"
+
+                   android:src="@drawable/blank" />
         <ImageView android:id="@+id/m0_2"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
 
-            android:layout_below="@id/m0_4"
-            android:layout_toRightOf="@id/m1_2"
-            
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
-        
+                   android:layout_below="@id/m0_4"
+                   android:layout_toRightOf="@id/m1_2"
+
+                   android:src="@drawable/blank" />
+
         <ImageView android:id="@+id/m1_1"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-            android:layout_below="@id/m1_2"
-            
-            android:contentDescription="@string/off"
-            android:src="@drawable/black_off" />
-        <ImageView android:id="@+id/m0_1"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-			android:layout_below="@id/m0_2"
-			android:layout_toRightOf="@id/m1_1"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
 
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
-               
+                   android:layout_below="@id/m1_2"
+
+                   android:src="@drawable/blank" />
+        <ImageView android:id="@+id/m0_1"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:layout_below="@id/m0_2"
+                   android:layout_toRightOf="@id/m1_1"
+
+                   android:src="@drawable/blank" />
+
     </RelativeLayout>
 
     <RelativeLayout android:id="@+id/seconds"
-        android:layout_height="wrap_content"
-        android:layout_width="60dp"
-        android:layout_toRightOf="@id/minutes">
-        
-        <ImageView android:id="@+id/s1_8" 
-            android:layout_height="@dimen/bit"
-            android:layout_width="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            android:contentDescription="@string/empty"
-            android:src="@null" 
-            android:visibility="invisible" />
+                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_toRightOf="@id/minutes">
+
+        <ImageView android:id="@+id/s1_8"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+                   android:src="@null"
+                   android:visibility="invisible" />
         <ImageView android:id="@+id/s0_8"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-            android:layout_toRightOf="@id/s1_8"
-            
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
-        
-        <ImageView android:id="@+id/s1_4" 
-            android:layout_height="@dimen/bit"
-            android:layout_width="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-            android:layout_below="@id/s1_8"
-            
-            android:contentDescription="@string/empty"
-            android:src="@drawable/black_off" />
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:layout_toRightOf="@id/s1_8"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/s1_4"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:layout_below="@id/s1_8"
+
+                   android:src="@drawable/blank" />
         <ImageView android:id="@+id/s0_4"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-            android:layout_below="@id/s0_8"
-            android:layout_toRightOf="@id/s1_4"
-            
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
-        
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:layout_below="@id/s0_8"
+                   android:layout_toRightOf="@id/s1_4"
+
+                   android:src="@drawable/blank" />
+
         <ImageView android:id="@+id/s1_2"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
 
-            android:layout_below="@id/s1_4"
-            
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
+                   android:layout_below="@id/s1_4"
+
+                   android:src="@drawable/blank" />
         <ImageView android:id="@+id/s0_2"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
 
-            android:layout_below="@id/s0_4"
-            android:layout_toRightOf="@id/s1_2"
-            
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
-        
+                   android:layout_below="@id/s0_4"
+                   android:layout_toRightOf="@id/s1_2"
+
+                   android:src="@drawable/blank" />
+
         <ImageView android:id="@+id/s1_1"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-            android:layout_below="@id/s1_2"
-            
-            android:contentDescription="@string/off"
-            android:src="@drawable/black_off" />
-        <ImageView android:id="@+id/s0_1"
-            android:layout_width="@dimen/bit"
-            android:layout_height="@dimen/bit"
-            android:layout_margin="@dimen/spacing2"
-            
-			android:layout_below="@id/s0_2"
-			android:layout_toRightOf="@id/s1_1"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
 
-            android:contentDescription="@string/on"
-            android:src="@drawable/black_off" />
-                
+                   android:layout_below="@id/s1_2"
+
+                   android:src="@drawable/blank" />
+        <ImageView android:id="@+id/s0_1"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:layout_below="@id/s0_2"
+                   android:layout_toRightOf="@id/s1_1"
+
+                   android:src="@drawable/blank" />
+
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

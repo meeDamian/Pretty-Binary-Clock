@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:initialLayout="@layout/circles_loading"
-    android:initialKeyguardLayout="@layout/circles_loading"
-    android:previewImage="@drawable/preview"
-    android:minHeight="114dp"
-    android:minWidth="180dp"
-    android:minResizeWidth="110dp"
-    android:configure="pl.d30.binClock.Configuration"
-    android:resizeMode="horizontal"
-    android:updatePeriodMillis="1800000"
-    android:widgetCategory="keyguard|home_screen" />
+                    xmlns:tools="http://schemas.android.com/tools"
+
+                    android:initialLayout="@layout/circles_loading"
+                    android:initialKeyguardLayout="@layout/circles_loading"
+
+                    android:minHeight="114dp"
+                    android:minWidth="180dp"
+                    android:minResizeWidth="110dp"
+                    android:resizeMode="horizontal"
+
+                    android:previewImage="@drawable/preview"
+                    android:configure="pl.d30.binClock.Configuration"
+
+                    android:widgetCategory="keyguard|home_screen"
+                    tools:ignore="UnusedAttribute"/>

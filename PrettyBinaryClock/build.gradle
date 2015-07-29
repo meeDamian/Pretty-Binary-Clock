@@ -1,35 +1,37 @@
 apply plugin: 'com.android.application'
-
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.1"
+    compileSdkVersion 22
+    buildToolsVersion "23.0.0 rc3"
 
     defaultConfig {
         applicationId 'pl.d30.binClock'
-        minSdkVersion 15
-        targetSdkVersion 21
+        minSdkVersion 16
+        targetSdkVersion 22
         versionCode 21
         versionName "0.6.1"
+
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
+
     signingConfigs {
         release {
-            storeFile     file(STORE_FILE)
-            storePassword STORE_PASSWORD
-            keyAlias      KEY_ALIAS
-            keyPassword   KEY_PASSWORD
+            storeFile file(project.STORE_FILE)
+            storePassword project.STORE_PASSWORD as String
+            keyAlias project.KEY_ALIAS as String
+            keyPassword project.KEY_PASSWORD as String
         }
     }
+
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.release as Object
             minifyEnabled true
             zipAlignEnabled true
-            // shrinkResources true
+            shrinkResources true
 
             android.applicationVariants.all { variant ->
                 variant.outputs.each { output ->
@@ -37,8 +39,8 @@ android {
                         def file = output.outputFile
                         String parent = file.parent
 
-                        if (project.hasProperty('OUTPUT_DIR') && new File(OUTPUT_DIR as String).exists())
-                            parent = OUTPUT_DIR
+                        if (project.hasProperty('OUTPUT_DIR') && new File(project.OUTPUT_DIR as String).exists())
+                            parent = project.OUTPUT_DIR
 
                         output.outputFile = new File(
                             parent,
@@ -52,4 +54,8 @@ android {
             }
         }
     }
+}
+
+dependencies {
+    compile 'com.android.support:support-annotations:22.2.1'
 }

@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
+    <!-- preferences, alarm clock, other app -->
+    <!--<ListPreference-->
+        <!--android:key="intent"-->
+        <!--android:title="Clicking the widget launches..." />-->
+
     <ListPreference
         android:key="background"
         android:title="@string/background_title"
         android:summary="@string/background_summary"
         android:entries="@array/background_list"
-        android:entryValues="@array/background_values"
+        android:entryValues="@array/values_three"
         android:defaultValue="0" />
+
+    <CheckBoxPreference
+        android:key="seconds"
+        android:title="Seconds"
+        android:summaryOn="Show always when enough space"
+        android:summaryOff="Hours and minutes only"
+        android:defaultValue="true" />
 
     <CheckBoxPreference
         android:key="compact"
