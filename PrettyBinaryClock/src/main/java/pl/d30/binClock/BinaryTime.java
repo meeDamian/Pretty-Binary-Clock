@@ -4,11 +4,11 @@ import java.util.Calendar;
 
 public class BinaryTime {
 
-    public static final int DIGIT_RIGHT = 0b1;  // 1
-    public static final int DIGIT_LEFT  = 0b10; // 2
+    public static final int DIGIT_RIGHT  = 0b1;  // 1
+    public static final int DIGIT_LEFT   = 0b10; // 2
     public static final int WHOLE_NUMBER = 0b11; // 3
 
-    public static final int HOUR = 0;
+    public static final int HOUR   = 0;
     public static final int MINUTE = 1;
     public static final int SECOND = 2;
 

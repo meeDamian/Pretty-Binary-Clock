@@ -24,7 +24,7 @@ public class ClockService extends Service {
 
     private static final String TAG = "BinaryService";
 
-    private Provider mReceiver;
+    private Provider  mReceiver;
     private AlarmCore alarm;
 
     @Override
