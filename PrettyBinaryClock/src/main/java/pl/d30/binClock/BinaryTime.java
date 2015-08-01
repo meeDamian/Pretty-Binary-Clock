@@ -38,15 +38,17 @@ public class BinaryTime {
     }
 
     private boolean[] getDigit(int value, int whichDigit) {
-        switch (whichDigit) {
-            case DIGIT_LEFT:
-                return convertToBinary(value / 10, 4);
-            case DIGIT_RIGHT:
-                return convertToBinary(value % 10, 4);
-            case WHOLE_NUMBER:
-            default:
-                return convertToBinary(value, 6);
-        }
+        if (whichDigit == DIGIT_LEFT)
+            value /= 10;
+
+        if (whichDigit == DIGIT_RIGHT)
+            value %= 10;
+
+        int digits = whichDigit == WHOLE_NUMBER
+            ? 6
+            : 4;
+
+        return convertToBinary(value, digits);
     }
 
     private boolean[] convertToBinary(int value, int digits) {
