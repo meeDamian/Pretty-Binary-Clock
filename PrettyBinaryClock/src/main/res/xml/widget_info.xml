@@ -7,11 +7,11 @@
 
                     android:minHeight="114dp"
                     android:minWidth="180dp"
-                    android:minResizeWidth="110dp"
-                    android:resizeMode="horizontal"
+                    android:minResizeWidth="20dp"
+                    android:resizeMode="vertical|horizontal"
 
                     android:previewImage="@drawable/preview"
                     android:configure="pl.d30.binClock.Configuration"
 
                     android:widgetCategory="keyguard|home_screen"
-                    tools:ignore="UnusedAttribute"/>
+                    tools:ignore="UnusedAttribute" />

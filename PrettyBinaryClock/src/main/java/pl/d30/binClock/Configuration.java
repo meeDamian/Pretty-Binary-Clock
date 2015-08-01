@@ -136,29 +136,39 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
 			
 			addPreferencesFromResource(R.xml.preferences);
 
-            setPremium(true);
+            boolean isPremium = false;
+            setPremium(isPremium);
 		}
 
-        private void setPremium(boolean isPremium) {
-            Preference premium = findPreference("premium");
 
-            if (isPremium) getPreferenceScreen().removePreference(premium);
-            else {
-                premium.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                    showBuyPremiumDialog();
-                    return false;
-                    }
-                });
-            }
+        private void enablePremium() {
+            Preference premium = findPreference("premium");
+            getPreferenceScreen().removePreference(premium);
 
             Preference dotColor = findPreference("dotColor");
-            dotColor.setEnabled(isPremium);
+            dotColor.setEnabled(true);
+
+            Preference compact = findPreference("compact");
+            compact.setEnabled(true);
         }
 
         private void showBuyPremiumDialog() {
             toast("buy premium");
+        }
+        private void disablePremium() {
+            Preference premium = findPreference("premium");
+            premium.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                showBuyPremiumDialog();
+                return false;
+                }
+            });
+        }
+
+        private void setPremium(boolean premium) {
+            if (premium) enablePremium();
+            else disablePremium();
         }
 
         private void toast(String text) {

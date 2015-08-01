@@ -32,7 +32,6 @@
 
         </receiver>
 
-
         <service android:name=".ClockService" />
 
         <activity

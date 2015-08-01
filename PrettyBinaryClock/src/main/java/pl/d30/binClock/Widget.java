@@ -12,6 +12,9 @@ import java.util.ArrayList;
 public class Widget {
     public static final String PREF_PREFIX  = "binClock_";
 
+    public static final int TYPE_BCD    = 0;
+    public static final int TYPE_PURE   = 1;
+
     public static final int BKG_TRANSPARENT = 0;
     public static final int BKG_BLACK       = 1;
     public static final int BKG_WHITE       = 2;
@@ -22,6 +25,8 @@ public class Widget {
     private static final String SP_KEY_CONFIGURED   = "configured";
     private static final String SP_KEY_SECONDS      = "seconds";
     private static final String SP_KEY_BACKGROUND   = "background";
+    private static final String SP_KEY_DOT_COLOR    = "dotColor";
+    private static final String SP_KEY_TYPE         = "compact";
 
 
 
@@ -29,7 +34,8 @@ public class Widget {
     private int id;
     private boolean needsSeconds;
     private @DrawableRes int background = NO_BACKGROUND;
-    private @ColorRes int color;
+    private int color;
+    private int type;
 
 
     private Integer minWidth;
@@ -43,6 +49,8 @@ public class Widget {
     private Context context;
     private boolean valid;
 
+    private boolean premium = true;
+
 
     public Widget(Context c, int widgetId) {
         context = c;
@@ -54,7 +62,7 @@ public class Widget {
             return;
         }
 
-        process(sp);
+        process(c, sp);
     }
     public void remove() {
         if (getPrefs()!=null)
@@ -63,21 +71,30 @@ public class Widget {
 
 
     // Processing things
-    private void process(SharedPreferences sp) {
+    // NOTE: order of things here matters!
+    private void process(Context c, SharedPreferences sp) {
         processSize(sp);
+        processAppearance(c, sp);
+
+        if (premium) processPremium(sp);
+        else {
+            type = TYPE_BCD;
+        }
+
         needsSeconds = processSeconds(sp);
-        processAppearance(sp);
         valid = true;
     }
     private boolean processSeconds(SharedPreferences sp) {
         boolean seconds = sp.getBoolean(SP_KEY_SECONDS, true);
         return seconds && doSecondsFit();
     }
-    private void processAppearance(SharedPreferences sp) {
+    private void processAppearance(Context c, SharedPreferences sp) {
+        int colorRes;
+
         switch (getInt(sp, SP_KEY_BACKGROUND, BKG_TRANSPARENT)) {
             case BKG_WHITE:
                 background = R.drawable.bg_white;
-                color = R.color.dark;
+                colorRes = R.color.dark;
                 break;
 
             case BKG_BLACK:
@@ -85,15 +102,24 @@ public class Widget {
 
             default:
             case BKG_TRANSPARENT:
-                color = R.color.light;
+                colorRes = R.color.light;
                 break;
         }
+
+        color = c.getResources().getColor(colorRes);
     }
     private void processSize(SharedPreferences sp) {
         minHeight = getInteger(sp, "minHeight");
         maxHeight = getInteger(sp, "maxHeight");
         minWidth  = getInteger(sp, "minWidth");
         maxWidth  = getInteger(sp, "maxWidth");
+    }
+    private void processPremium(SharedPreferences sp) {
+        color = sp.getInt(SP_KEY_DOT_COLOR, color);
+
+        type = sp.getBoolean(SP_KEY_TYPE, false)
+            ? TYPE_BCD
+            : TYPE_PURE;
     }
 
 
@@ -103,8 +129,16 @@ public class Widget {
             ? minWidth
             : maxWidth;
 
-        return width == null || width > 180;
+        return width == null || width > getMinWidthForSeconds();
     }
+    public boolean doMinutesFit() {
+        Integer width = minWidth != null
+            ? minWidth
+            : maxWidth;
+
+        return width == null || doSecondsFit() || width > getMinWidthForMinutes();
+    }
+
     public void setDimensions(int minH, int maxH, int minW, int maxW) {
         getPrefs()
             .edit()
@@ -114,13 +148,25 @@ public class Widget {
             .putInt("maxWidth" , maxWidth  = maxW)
             .commit();
     }
-
+    public int getMinWidthForSeconds() {
+        return type == TYPE_BCD
+            ? 180
+            : 90;
+    }
+    public int getMinWidthForMinutes() {
+        return type == TYPE_BCD
+            ? 90
+            : 0;
+    }
 
     public int getId() {
         return id;
     }
     public boolean isValid() {
         return valid;
+    }
+    public int getType() {
+        return type;
     }
     public boolean requiresSeconds() {
         return needsSeconds;
@@ -137,7 +183,6 @@ public class Widget {
     public int getAlpha(boolean state) {
         return state ? 255 : 85;
     }
-
 
 
     // SharedPreferences stuff

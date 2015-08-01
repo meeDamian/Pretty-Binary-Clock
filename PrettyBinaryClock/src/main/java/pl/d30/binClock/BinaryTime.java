@@ -4,8 +4,9 @@ import java.util.Calendar;
 
 public class BinaryTime {
 
-    public static final int DIGIT_LEFT  = 0b10;
-    public static final int DIGIT_RIGHT = 0b1;
+    public static final int DIGIT_LEFT  = 0b10;  // 2
+    public static final int DIGIT_RIGHT = 0b1;   // 1
+    public static final int WHOLE_NUMBER = 0b11; // 3
 
     public static final int HOUR = 0;
     public static final int MINUTE = 1;
@@ -42,8 +43,9 @@ public class BinaryTime {
                 return convertToBinary(value / 10, 4);
             case DIGIT_RIGHT:
                 return convertToBinary(value % 10, 4);
+            case WHOLE_NUMBER:
             default:
-                return convertToBinary(value, 8);
+                return convertToBinary(value, 6);
         }
     }
 

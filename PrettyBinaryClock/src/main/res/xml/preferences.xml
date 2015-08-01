@@ -16,14 +16,14 @@
         android:entryValues="@array/values_three"
         android:defaultValue="0" />
 
-    <pl.d30.binClock.ColorPickerPreference
+    <com.flask.colorpicker.ColorPickerPreference
         android:key="dotColor"
         android:title="Dots color"
-        app:pickerTitle="Choose dots color"
-        app:alphaSlider="true"
+        android:enabled="false"
+        app:pickerTitle="@string/color_picker_title"
         app:density="8"
-        app:initialColor="0xffff0000"
-        app:lightnessSlider="true" />
+        app:lightnessSlider="true"
+        app:initialColor="0xffffffff" />
 
     <CheckBoxPreference
         android:key="seconds"
@@ -37,7 +37,7 @@
         android:title="@string/compact_title"
         android:summaryOn="@string/compactOn_summary"
         android:summaryOff="@string/compactOff_summary"
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:enabled="false" />
 
 </PreferenceScreen>

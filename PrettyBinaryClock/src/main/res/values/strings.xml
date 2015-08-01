@@ -19,4 +19,5 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="color_picker_title">Choose dots color</string>
 </resources>

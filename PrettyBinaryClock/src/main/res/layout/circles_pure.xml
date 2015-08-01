@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/master_exploder"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              tools:ignore="ContentDescription,RtlHardcoded,ObsoleteLayoutParam">
+
+    <LinearLayout android:id="@+id/hours"
+                  android:orientation="vertical"
+                  android:layout_height="wrap_content"
+                  android:layout_width="wrap_content">
+
+        <ImageView android:id="@+id/h32"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@null"
+                   android:visibility="invisible" />
+
+        <ImageView android:id="@+id/h16"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/h8"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/h4"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/h2"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/h1"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/minutes"
+                  android:orientation="vertical"
+                  android:layout_height="wrap_content"
+                  android:layout_width="wrap_content">
+
+        <ImageView android:id="@+id/m32"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/m16"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/m8"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/m4"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/m2"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/m1"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/seconds"
+                  android:orientation="vertical"
+                  android:layout_height="wrap_content"
+                  android:layout_width="wrap_content">
+
+        <ImageView android:id="@+id/s32"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/s16"
+                   android:layout_width="@dimen/bit"
+                   android:layout_height="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/s8"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/s4"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/s2"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+        <ImageView android:id="@+id/s1"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+
+                   android:src="@drawable/blank" />
+
+    </LinearLayout>
+
+</LinearLayout>

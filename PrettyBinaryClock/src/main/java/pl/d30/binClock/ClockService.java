@@ -66,21 +66,32 @@ public class ClockService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent.getAction() == null)
-            Log.w(TAG, "action be null");
 
-        Bundle b;
+        // (intent == null) on service restart
+        if (intent!=null) {
+            String action = intent.getAction();
 
-        Log.d(TAG, intent.getAction());
+            if (action==null)
+                Log.w(TAG, "action be null");
+            else
+                processTheAction(action, intent.getExtras());
+        }
 
-        switch (intent.getAction()) {
+        // HALT operations if no widgets
+        if (Widget.getValidWidgets(this).size() == 0)
+            stopSelf();
+
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    private void processTheAction(String action, Bundle b) {
+        switch (action) {
             case Intent.ACTION_SCREEN_OFF:
                 alarm.stop();
                 break;
 
             case Intent.ACTION_SCREEN_ON:
             case ClockIntent.BINARY_ALARM_START:
-                b = intent.getExtras();
                 if (b!=null && b.getBoolean("clean", false))
                     Widget.clearInvalidWidgets(this);
 
@@ -89,7 +100,6 @@ public class ClockService extends Service {
                 break;
 
             case ClockIntent.BINARY_WIDGET_CHANGE:
-                b = intent.getExtras();
                 new Widget(this, b.getInt("wid"))
                     .setDimensions(
                         b.getInt("appWidgetMinHeight"),
@@ -103,7 +113,6 @@ public class ClockService extends Service {
                 break;
 
             case ClockIntent.BINARY_WIDGET_REMOVE:
-                b = intent.getExtras();
                 int[] wids = b.getIntArray("wids");
                 if (wids!=null)
                     for (int wid : wids)
@@ -115,14 +124,9 @@ public class ClockService extends Service {
                 break;
 
             default:
-                Log.i(TAG, "~> Unknown intent: " + intent.getAction());
+                Log.w(TAG, "~> Unknown intent: " + action);
                 break;
         }
-
-        if (Widget.getValidWidgets(this).size() == 0)
-            stopSelf();
-
-        return super.onStartCommand(intent, flags, startId);
     }
 
 
