@@ -12,7 +12,7 @@ import pl.d30.binClock.Widget;
 
 abstract public class BinaryClock {
 
-    protected Widget w;
+    protected Widget     w;
     protected BinaryTime bt;
 
     public BinaryClock(Widget widget, BinaryTime binaryTime) {
