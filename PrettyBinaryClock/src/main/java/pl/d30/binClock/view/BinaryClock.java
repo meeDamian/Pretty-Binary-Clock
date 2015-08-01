@@ -19,6 +19,7 @@ abstract public class BinaryClock {
         w = widget;
         bt = binaryTime;
     }
+
     public RemoteViews getRemoteView(Context context) {
         RemoteViews rv = new RemoteViews(context.getPackageName(), getLayout());
 
@@ -30,7 +31,8 @@ abstract public class BinaryClock {
         return rv;
     }
 
-    abstract protected @LayoutRes int getLayout();
+    @LayoutRes
+    abstract protected int getLayout();
 
     protected static String getRightAlphaKey() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN

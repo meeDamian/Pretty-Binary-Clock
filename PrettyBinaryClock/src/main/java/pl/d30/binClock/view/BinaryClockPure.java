@@ -12,13 +12,13 @@ public class BinaryClockPure extends BinaryClock {
     private static final int[][] BIT = {
 
         // hours
-        { R.id.h32, R.id.h16, R.id.h8, R.id.h4, R.id.h2, R.id.h1 },
+        {R.id.h32, R.id.h16, R.id.h8, R.id.h4, R.id.h2, R.id.h1},
 
         // minutes
-        { R.id.m32, R.id.m16, R.id.m8, R.id.m4, R.id.m2, R.id.m1 },
+        {R.id.m32, R.id.m16, R.id.m8, R.id.m4, R.id.m2, R.id.m1},
 
         // seconds
-        { R.id.s32, R.id.s16, R.id.s8, R.id.s4, R.id.s2, R.id.s1 }
+        {R.id.s32, R.id.s16, R.id.s8, R.id.s4, R.id.s2, R.id.s1}
     };
 
     public BinaryClockPure(Widget widget, BinaryTime binaryTime) {

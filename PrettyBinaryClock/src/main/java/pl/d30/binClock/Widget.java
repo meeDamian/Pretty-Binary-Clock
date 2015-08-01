@@ -10,30 +10,29 @@ import android.support.annotation.DrawableRes;
 import java.util.ArrayList;
 
 public class Widget {
-    public static final String PREF_PREFIX  = "binClock_";
+    public static final String PREF_PREFIX = "binClock_";
 
-    public static final int TYPE_BCD    = 0;
-    public static final int TYPE_PURE   = 1;
+    public static final int TYPE_BCD  = 0;
+    public static final int TYPE_PURE = 1;
 
     public static final int BKG_TRANSPARENT = 0;
     public static final int BKG_BLACK       = 1;
     public static final int BKG_WHITE       = 2;
 
 
-    private static final int NO_BACKGROUND  = 0;
+    private static final int NO_BACKGROUND = 0;
 
-    private static final String SP_KEY_CONFIGURED   = "configured";
-    private static final String SP_KEY_SECONDS      = "seconds";
-    private static final String SP_KEY_BACKGROUND   = "background";
-    private static final String SP_KEY_DOT_COLOR    = "dotColor";
-    private static final String SP_KEY_TYPE         = "compact";
-
+    private static final String SP_KEY_CONFIGURED = "configured";
+    private static final String SP_KEY_SECONDS    = "seconds";
+    private static final String SP_KEY_BACKGROUND = "background";
+    private static final String SP_KEY_DOT_COLOR  = "dotColor";
+    private static final String SP_KEY_TYPE       = "compact";
 
 
     // widget characteristics
-    private int id;
+    private int     id;
     private boolean needsSeconds;
-    private @DrawableRes int background = NO_BACKGROUND;
+    @DrawableRes private int background = NO_BACKGROUND;
     private int color;
     private int type;
 
@@ -57,15 +56,16 @@ public class Widget {
         id = widgetId;
 
         SharedPreferences sp = getPrefs();
-        if (sp==null || !sp.getBoolean(SP_KEY_CONFIGURED, false)) {
+        if (sp == null || !sp.getBoolean(SP_KEY_CONFIGURED, false)) {
             valid = false;
             return;
         }
 
         process(c, sp);
     }
+
     public void remove() {
-        if (getPrefs()!=null)
+        if (getPrefs() != null)
             clearPrefs();
     }
 
@@ -84,10 +84,12 @@ public class Widget {
         needsSeconds = processSeconds(sp);
         valid = true;
     }
+
     private boolean processSeconds(SharedPreferences sp) {
         boolean seconds = sp.getBoolean(SP_KEY_SECONDS, true);
         return seconds && doSecondsFit();
     }
+
     private void processAppearance(Context c, SharedPreferences sp) {
         int colorRes;
 
@@ -108,12 +110,14 @@ public class Widget {
 
         color = c.getResources().getColor(colorRes);
     }
+
     private void processSize(SharedPreferences sp) {
         minHeight = getInteger(sp, "minHeight");
         maxHeight = getInteger(sp, "maxHeight");
-        minWidth  = getInteger(sp, "minWidth");
-        maxWidth  = getInteger(sp, "maxWidth");
+        minWidth = getInteger(sp, "minWidth");
+        maxWidth = getInteger(sp, "maxWidth");
     }
+
     private void processPremium(SharedPreferences sp) {
         color = sp.getInt(SP_KEY_DOT_COLOR, color);
 
@@ -131,6 +135,7 @@ public class Widget {
 
         return width == null || width > getMinWidthForSeconds();
     }
+
     public boolean doMinutesFit() {
         Integer width = minWidth != null
             ? minWidth
@@ -144,15 +149,17 @@ public class Widget {
             .edit()
             .putInt("minHeight", minHeight = minH)
             .putInt("maxHeight", maxHeight = maxH)
-            .putInt("minWidth" , minWidth  = minW)
-            .putInt("maxWidth" , maxWidth  = maxW)
+            .putInt("minWidth", minWidth = minW)
+            .putInt("maxWidth", maxWidth = maxW)
             .commit();
     }
+
     public int getMinWidthForSeconds() {
         return type == TYPE_BCD
             ? 180
             : 90;
     }
+
     public int getMinWidthForMinutes() {
         return type == TYPE_BCD
             ? 90
@@ -162,24 +169,33 @@ public class Widget {
     public int getId() {
         return id;
     }
+
     public boolean isValid() {
         return valid;
     }
+
     public int getType() {
         return type;
     }
+
     public boolean requiresSeconds() {
         return needsSeconds;
     }
+
     public boolean hasBackground() {
         return background != NO_BACKGROUND;
     }
-    public @DrawableRes int getBackground() {
+
+    @DrawableRes
+    public int getBackground() {
         return background;
     }
-    public @ColorRes int getColor() {
+
+    @ColorRes
+    public int getColor() {
         return color;
     }
+
     public int getAlpha(boolean state) {
         return state ? 255 : 85;
     }
@@ -189,22 +205,27 @@ public class Widget {
     private int getInt(SharedPreferences sp, String key, int defaultValue) {
         return Integer.parseInt(sp.getString(key, Integer.toString(defaultValue)));
     }
+
     private Integer getInteger(SharedPreferences sp, String key) {
         int tmp = sp.getInt(key, -1);
-        return tmp==-1 ? null : tmp;
+        return tmp == -1 ? null : tmp;
     }
+
     private String getPrefsName() {
         return getPrefsName(id);
     }
+
     private SharedPreferences getPrefs() {
         return context.getSharedPreferences(getPrefsName(), Context.MODE_PRIVATE);
     }
+
     private void clearPrefs() {
         getPrefs()
             .edit()
             .clear()
             .commit();
     }
+
     public void makeValid() {
         getPrefs()
             .edit()
@@ -219,6 +240,7 @@ public class Widget {
     public static String getPrefsName(int id) {
         return PREF_PREFIX + id;
     }
+
     public static ArrayList<Widget> getValidWidgets(Context c, int[] wids, boolean removeInvalid) {
         ArrayList<Widget> widgets = new ArrayList<>();
         for (int wid : wids) {
@@ -240,9 +262,11 @@ public class Widget {
 
         return getValidWidgets(c, wids, removeInvalid);
     }
+
     public static ArrayList<Widget> getValidWidgets(Context c) {
         return getValidWidgets(c, false);
     }
+
     public static void clearInvalidWidgets(Context c) {
         getValidWidgets(c, true);
     }
@@ -250,11 +274,12 @@ public class Widget {
     public static int[] getIds(ArrayList<Widget> widgets) {
         int[] ids = new int[widgets.size()];
 
-        for(int i = 0, n = widgets.size(); i < n; i++)
+        for (int i = 0, n = widgets.size(); i < n; i++)
             ids[i] = widgets.get(i).getId();
 
         return ids;
     }
+
     public static int[] getIds(Context c) {
         return getIds(getValidWidgets(c));
     }
@@ -266,6 +291,7 @@ public class Widget {
 
         return false;
     }
+
     public static boolean areSecondsRequired(Context c) {
         return areSecondsRequired(getValidWidgets(c));
     }

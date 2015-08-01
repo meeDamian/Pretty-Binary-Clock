@@ -4,8 +4,8 @@ import java.util.Calendar;
 
 public class BinaryTime {
 
-    public static final int DIGIT_LEFT  = 0b10;  // 2
-    public static final int DIGIT_RIGHT = 0b1;   // 1
+    public static final int DIGIT_RIGHT = 0b1;  // 1
+    public static final int DIGIT_LEFT  = 0b10; // 2
     public static final int WHOLE_NUMBER = 0b11; // 3
 
     public static final int HOUR = 0;
@@ -51,8 +51,8 @@ public class BinaryTime {
 
     private boolean[] convertToBinary(int value, int digits) {
         boolean[] bits = new boolean[digits];
-        for (int i = digits-1; i >= 0; i--)
-            bits[digits-i-1] = (value & (1 << i)) != 0;
+        for (int i = digits - 1; i >= 0; i--)
+            bits[digits - i - 1] = (value & (1 << i)) != 0;
 
         return bits;
     }

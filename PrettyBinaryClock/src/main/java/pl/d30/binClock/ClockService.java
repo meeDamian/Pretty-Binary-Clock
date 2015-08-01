@@ -51,7 +51,7 @@ public class ClockService extends Service {
     public void onDestroy() {
         unregisterReceiver(mReceiver);
 
-        if (alarm!=null)
+        if (alarm != null)
             alarm.stop();
 
         super.onDestroy();
@@ -68,10 +68,10 @@ public class ClockService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         // (intent == null) on service restart
-        if (intent!=null) {
+        if (intent != null) {
             String action = intent.getAction();
 
-            if (action==null)
+            if (action == null)
                 Log.w(TAG, "action be null");
             else
                 processTheAction(action, intent.getExtras());
@@ -92,7 +92,7 @@ public class ClockService extends Service {
 
             case Intent.ACTION_SCREEN_ON:
             case ClockIntent.BINARY_ALARM_START:
-                if (b!=null && b.getBoolean("clean", false))
+                if (b != null && b.getBoolean("clean", false))
                     Widget.clearInvalidWidgets(this);
 
             case ClockIntent.BINARY_WIDGET_CREATE:
@@ -114,7 +114,7 @@ public class ClockService extends Service {
 
             case ClockIntent.BINARY_WIDGET_REMOVE:
                 int[] wids = b.getIntArray("wids");
-                if (wids!=null)
+                if (wids != null)
                     for (int wid : wids)
                         new Widget(this, wid).remove();
                 break;
@@ -129,7 +129,24 @@ public class ClockService extends Service {
         }
     }
 
+    public static void sendToService(Context c, String action, Bundle b) {
+        Intent i = new Intent(c, ClockService.class).setAction(action);
+        if (b != null) i.putExtras(b);
+        c.startService(i);
+    }
 
+    public static void sendToService(Context c, String action) {
+        sendToService(c, action, null);
+    }
+
+    public static boolean isRunning(Context c) {
+        ActivityManager manager = (ActivityManager) c.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE))
+            if (ClockService.class.getName().equals(service.service.getClassName()))
+                return true;
+
+        return false;
+    }
 
     private class AlarmLegacy extends AlarmCore {
 
@@ -159,7 +176,6 @@ public class ClockService extends Service {
         }
     }
 
-
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private class AlarmKitkat extends AlarmCore {
 
@@ -172,7 +188,7 @@ public class ClockService extends Service {
             t.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
-                sendBroadcast(getIntent());
+                    sendBroadcast(getIntent());
                 }
             }, getDelay(), getInterval());
         }
@@ -184,7 +200,6 @@ public class ClockService extends Service {
             t = new Timer();
         }
     }
-
 
     private abstract class AlarmCore {
 
@@ -227,29 +242,11 @@ public class ClockService extends Service {
 
             return cal.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
         }
+
         protected long getInterval() {
             return secondsEnabled
                 ? SECOND
                 : MINUTE;
         }
-    }
-
-
-    public static void sendToService(Context c, String action, Bundle b) {
-        Intent i = new Intent(c, ClockService.class).setAction(action);
-        if (b!=null) i.putExtras(b);
-        c.startService(i);
-    }
-    public static void sendToService(Context c, String action) {
-        sendToService(c, action, null);
-    }
-
-    public static boolean isRunning(Context c) {
-        ActivityManager manager = (ActivityManager) c.getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE))
-            if (ClockService.class.getName().equals(service.service.getClassName()))
-                return true;
-
-        return false;
     }
 }

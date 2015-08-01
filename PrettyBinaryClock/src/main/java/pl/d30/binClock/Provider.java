@@ -23,7 +23,7 @@ public class Provider extends AppWidgetProvider {
 
     // this litter sucker manages everything that doesn't fit to any other method here
     public void onReceive(@NonNull Context c, @NonNull Intent intent) {
-        switch(intent.getAction()) {
+        switch (intent.getAction()) {
             case Intent.ACTION_SCREEN_OFF:
             case Intent.ACTION_SCREEN_ON:
                 sendToService(c, intent.getAction());
@@ -39,25 +39,29 @@ public class Provider extends AppWidgetProvider {
 
         super.onReceive(c, intent);
     }
-	public void onEnabled(Context c) {
+
+    public void onEnabled(Context c) {
         sendToService(c, BINARY_ALARM_START);
-	}
-	public void onAppWidgetOptionsChanged(Context c, AppWidgetManager awm, int wid, Bundle newOptions) {
+    }
+
+    public void onAppWidgetOptionsChanged(Context c, AppWidgetManager awm, int wid, Bundle newOptions) {
         newOptions.putInt("wid", wid);
         sendToService(c, BINARY_WIDGET_CHANGE, newOptions);
-	}
-	public void onDeleted(Context c, int[] ids) {
+    }
+
+    public void onDeleted(Context c, int[] ids) {
         Bundle b = new Bundle();
         b.putIntArray("wids", ids);
         sendToService(c, BINARY_WIDGET_REMOVE, b);
-	}
-	public void onDisabled(Context c) {
+    }
+
+    public void onDisabled(Context c) {
         // Do not re-wake the service if it's not running
         if (!ClockService.isRunning(c))
             return;
 
         sendToService(c, BINARY_ALARM_STOP);
-	}
+    }
 
     public void onUpdate(Context c, AppWidgetManager awm, int[] wids) {
         ArrayList<Widget> widgets = Widget.getValidWidgets(c);
