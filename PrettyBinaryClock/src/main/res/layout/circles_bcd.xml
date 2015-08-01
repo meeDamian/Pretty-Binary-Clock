@@ -11,18 +11,22 @@
                     android:layout_height="wrap_content"
                     android:layout_width="60dp">
 
-        <ImageView android:id="@+id/h1_8"
-                   android:layout_height="@dimen/bit"
-                   android:layout_width="@dimen/bit"
-                   android:layout_margin="@dimen/spacing2"
-                   android:src="@null"
-                   android:visibility="invisible" />
+        <TextView android:id="@+id/am_pm"
+                  android:layout_height="@dimen/bit"
+                  android:layout_width="@dimen/bit"
+                  android:layout_margin="@dimen/spacing2"
+                  android:text="PM"
+                  android:textSize="12dp"
+                  android:gravity="center"
+                  android:visibility="invisible"
+                  tools:ignore="HardcodedText,SpUsage" />
+
         <ImageView android:id="@+id/h0_8"
                    android:layout_width="@dimen/bit"
                    android:layout_height="@dimen/bit"
                    android:layout_margin="@dimen/spacing2"
 
-                   android:layout_toRightOf="@id/h1_8"
+                   android:layout_toRightOf="@id/am_pm"
 
                    android:src="@drawable/blank"/>
 
@@ -31,7 +35,7 @@
                    android:layout_width="@dimen/bit"
                    android:layout_margin="@dimen/spacing2"
 
-                   android:layout_below="@id/h1_8"
+                   android:layout_below="@id/am_pm"
 
                    android:src="@null"
                    android:visibility="invisible" />

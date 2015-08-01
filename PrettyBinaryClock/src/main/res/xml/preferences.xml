@@ -4,7 +4,7 @@
 
     <Preference
         android:key="premium"
-        android:title="Unlock everything"
+        android:title="Unlock all options"
         android:summary="See what goodies premium gives you"
         android:icon="@drawable/ic_shop_white_36dp" />
 
@@ -20,12 +20,13 @@
         android:key="dotColor"
         android:title="Dots color"
         android:enabled="false"
+
         app:pickerTitle="@string/color_picker_title"
         app:density="8"
         app:lightnessSlider="true"
         app:initialColor="0xffffffff" />
 
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="seconds"
         android:title="Seconds"
         android:summaryOn="Show always when enough space"
@@ -33,11 +34,19 @@
         android:defaultValue="true" />
 
     <CheckBoxPreference
+        android:key="AM_PM"
+        android:title="Use AM/PM format"
+        android:summaryOn="1:00 PM"
+        android:summaryOff="13:00"
+        android:defaultValue="false"
+        android:enabled="false" />
+
+    <CheckBoxPreference
         android:key="compact"
         android:title="@string/compact_title"
         android:summaryOn="@string/compactOn_summary"
         android:summaryOff="@string/compactOff_summary"
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:enabled="false" />
 
 </PreferenceScreen>

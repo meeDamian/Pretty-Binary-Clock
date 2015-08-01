@@ -10,8 +10,8 @@
     <string name="background_title">Background</string>
     <string name="background_summary">Pick color you like</string>
 
-    <string name="compact_title">BCD notation</string>
-    <string name="compactOn_summary">Each number is one column</string>
+    <string name="compact_title">Pure binary notation</string>
+    <string name="compactOn_summary">Each number is a column</string>
     <string name="compactOff_summary">Each digit is a column</string>
     
     <string name="menu_done">Done</string>

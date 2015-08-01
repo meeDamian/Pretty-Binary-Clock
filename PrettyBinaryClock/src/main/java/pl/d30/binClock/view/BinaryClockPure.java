@@ -31,7 +31,7 @@ public class BinaryClockPure extends BinaryClock {
 
         int groups = w.requiresSeconds() ? 3 : 2;
         for (int group = 0; group < groups; group++) {
-            boolean[] digit = bt.get(group, BinaryTime.WHOLE_NUMBER);
+            boolean[] digit = bt.get(group, BinaryTime.WHOLE_NUMBER, w.isAmPm());
             for (int i = 0; i <= 5; i++) {
                 int dotId = BIT[group][i];
                 rv.setInt(

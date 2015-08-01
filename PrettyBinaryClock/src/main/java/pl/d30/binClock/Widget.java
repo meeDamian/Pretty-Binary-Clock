@@ -4,8 +4,8 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -22,11 +22,12 @@ public class Widget {
 
     private static final int NO_BACKGROUND = 0;
 
-    private static final String SP_KEY_CONFIGURED = "configured";
-    private static final String SP_KEY_SECONDS    = "seconds";
-    private static final String SP_KEY_BACKGROUND = "background";
-    private static final String SP_KEY_DOT_COLOR  = "dotColor";
-    private static final String SP_KEY_TYPE       = "compact";
+    public static final String SP_KEY_CONFIGURED = "configured";
+    public static final String SP_KEY_SECONDS    = "seconds";
+    public static final String SP_KEY_BACKGROUND = "background";
+    public static final String SP_KEY_DOT_COLOR  = "dotColor";
+    public static final String SP_KEY_TYPE       = "compact";
+    public static final String SP_KEY_AM_PM      = "AM_PM";
 
 
     // widget characteristics
@@ -34,7 +35,8 @@ public class Widget {
     private boolean needsSeconds;
     @DrawableRes private int background = NO_BACKGROUND;
     private int color;
-    private int type;
+    private int type = TYPE_BCD;
+    private boolean am_pm = false;
 
 
     private Integer minWidth;
@@ -76,10 +78,8 @@ public class Widget {
         processSize(sp);
         processAppearance(c, sp);
 
-        if (premium) processPremium(sp);
-        else {
-            type = TYPE_BCD;
-        }
+        if (premium)
+            processPremium(sp);
 
         needsSeconds = processSeconds(sp);
         valid = true;
@@ -122,8 +122,10 @@ public class Widget {
         color = sp.getInt(SP_KEY_DOT_COLOR, color);
 
         type = sp.getBoolean(SP_KEY_TYPE, false)
-            ? TYPE_BCD
-            : TYPE_PURE;
+            ? TYPE_PURE
+            : TYPE_BCD;
+
+        am_pm = sp.getBoolean(SP_KEY_AM_PM, false);
     }
 
 
@@ -169,33 +171,28 @@ public class Widget {
     public int getId() {
         return id;
     }
-
     public boolean isValid() {
         return valid;
     }
-
     public int getType() {
         return type;
     }
-
+    public boolean isAmPm() {
+        Log.d("BinaryLol", "AMPM: " + am_pm);
+        return am_pm;
+    }
     public boolean requiresSeconds() {
         return needsSeconds;
     }
-
     public boolean hasBackground() {
         return background != NO_BACKGROUND;
     }
-
-    @DrawableRes
-    public int getBackground() {
+    @DrawableRes public int getBackground() {
         return background;
     }
-
-    @ColorRes
     public int getColor() {
         return color;
     }
-
     public int getAlpha(boolean state) {
         return state ? 255 : 85;
     }
