@@ -1,0 +1,166 @@
+ext {
+    MAJOR = 'major'
+    MINOR = 'minor'
+    BUILD = 'build'
+
+    versionFile = new File(project.rootDir, "version.properties")
+
+    getVersionName = {
+        Properties version = readVersion()
+        "${version[MAJOR]}.${version[MINOR]}.${version[BUILD]}"
+    }
+
+    getVersionCode = {
+        Properties version = readVersion()
+
+        int major = version[MAJOR] as int
+        int minor = version[MINOR] as int
+        int build = version[BUILD] as int
+
+        1e5 * major + 1e3 * minor + build
+    }
+
+    loadSecrets = this.&loadSecrets
+
+    safeGet = this.&safeGet
+    safeGetFile = this.&safeGetFile
+}
+
+void loadSecrets() {
+    File secretPropsFile = file('../secret.properties')
+    if (secretPropsFile.exists()) {
+        Properties p = new Properties()
+        p.load(new FileInputStream(secretPropsFile))
+        p.each { name, value ->
+            if (!hasProperty(name as String))
+                project.set name, value
+        }
+    }
+}
+
+// get variables && prevent crashing if missing
+String safeGet(String name, String defaultValue = '') {
+    hasProperty(name) ? project[name] : defaultValue
+}
+File safeGetFile(String name) {
+    String fileName = safeGet(name, null)
+    fileName != null ? file(fileName) : null
+}
+
+Properties readVersion() {
+    File verFile = versionFile
+
+    if (!verFile.canRead())
+        verFile.createNewFile()
+
+    Properties props = new Properties()
+
+    props.load new FileInputStream(verFile)
+
+    // if sth missing: set and save default
+    if (!props[MAJOR] || !props[MINOR] || !props[BUILD]) {
+        saveVersion(
+            props[MAJOR] ?: "1",
+            props[MINOR] ?: "0",
+            props[BUILD] ?: "0"
+        )
+    }
+
+    props
+}
+
+void saveVersion(major, minor, build) {
+    Properties props = new Properties()
+
+    props[MAJOR] = major
+    props[MINOR] = minor
+    props[BUILD] = build
+
+    saveVersion props
+}
+void saveVersion(Properties props) {
+    File verFile = versionFile
+
+    props.store verFile.newWriter(), "APK version split into 3 groups "
+}
+
+void incrementVersionNumber(String which=BUILD) {
+    Properties version = readVersion()
+
+    int number = version[which] as int
+    number++
+
+    version[which] = number.toString()
+
+    saveVersion(version)
+}
+
+File getExistingDir(File dir) {
+    if (!dir.exists())
+        dir.mkdirs()
+
+    return dir
+}
+
+File getReleasesDir() {
+    getExistingDir(new File(
+        safeGet('RELEASES_PARENT_DIR', '~/APKs'),
+        safeGet('FOLDER_NAME', project.group as String)
+    ))
+}
+
+File getMappingsDir() {
+    getExistingDir(new File(getReleasesDir(), 'mappings'))
+}
+
+task incrementVersion << {
+    incrementVersionNumber()
+}
+
+if (plugins.hasPlugin("android") || plugins.hasPlugin("android-library")) {
+    android {
+        afterEvaluate {
+            def autoIncrementVariant = { variant ->
+                if (variant.buildType.name == buildTypes.release.name) {
+                    variant.preBuild.dependsOn incrementVersion
+                    incrementVersion.doLast {
+                        variant.mergedFlavor.versionName = getVersionName()
+                        variant.mergedFlavor.versionCode = getVersionCode()
+                    }
+
+                    variant.outputs.each { output ->
+                        assembleRelease.doLast {
+                            String fileName = [
+                                defaultConfig.applicationId,
+                                project.name,
+                                getVersionName(),
+                                getVersionCode()
+                            ].join('-')
+
+                            copy {
+                                from output.outputFile
+                                into getReleasesDir()
+                                rename 'widget-release.apk', "${fileName}.apk"
+                            }
+
+                            if (variant.getBuildType().isMinifyEnabled()) {
+                                copy {
+                                    from variant.mappingFile
+                                    into getMappingsDir()
+                                    rename 'mapping.txt', "mapping-${fileName}.txt"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (plugins.hasPlugin('android'))
+                applicationVariants.all { variant -> autoIncrementVariant(variant) }
+
+            if (plugins.hasPlugin('android-library'))
+                libraryVariants.all { variant -> autoIncrementVariant(variant) }
+        }
+    }
+
+}

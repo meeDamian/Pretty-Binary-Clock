@@ -1,4 +1,15 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.github.triplet.play'
+
+apply from: '../incrementAndExport.gradle'
+
+
+play {
+    serviceAccountEmail = safeGet('PLAY_EMAIL')
+    pk12File            = safeGetFile('PLAY_KEY')
+}
+
+loadSecrets();
 
 android {
     compileSdkVersion 22
@@ -8,8 +19,9 @@ android {
         applicationId 'pl.d30.binClock'
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 23
-        versionName "0.7.1"
+
+        versionCode getVersionCode() as Integer
+        versionName getVersionName() as String
     }
 
     compileOptions {
@@ -19,39 +31,19 @@ android {
 
     signingConfigs {
         release {
-            storeFile file(project.STORE_FILE)
-            storePassword project.STORE_PASSWORD as String
-            keyAlias project.KEY_ALIAS as String
-            keyPassword project.KEY_PASSWORD as String
+            storeFile       safeGetFile('STORE_FILE') as File
+            storePassword   safeGet('STORE_PASSWORD') as String
+            keyAlias        safeGet('KEY_ALIAS') as String
+            keyPassword     safeGet('KEY_PASSWORD', safeGet('STORE_PASSWORD')) as String
         }
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.release as Object
-            minifyEnabled true
+            signingConfig   signingConfigs.release as Object
+            minifyEnabled   true
             zipAlignEnabled true
             shrinkResources true
-
-            android.applicationVariants.all { variant ->
-                variant.outputs.each { output ->
-                    if (output.name == "release") {
-                        def file = output.outputFile
-                        String parent = file.parent
-
-                        if (project.hasProperty('OUTPUT_DIR') && new File(project.OUTPUT_DIR as String).exists())
-                            parent = project.OUTPUT_DIR
-
-                        output.outputFile = new File(
-                            parent,
-                            file.name.replace(
-                                ".apk",
-                                "-" + (defaultConfig.versionName as String) + "-build" + (defaultConfig.versionCode as String) + ".apk"
-                            ) as String
-                        )
-                    }
-                }
-            }
         }
     }
 }
