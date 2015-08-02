@@ -5,7 +5,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.DrawableRes;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -178,7 +177,6 @@ public class Widget {
         return type;
     }
     public boolean isAmPm() {
-        Log.d("BinaryLol", "AMPM: " + am_pm);
         return am_pm;
     }
     public boolean requiresSeconds() {

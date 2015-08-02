@@ -3,6 +3,7 @@
           package="pl.d30.binClock" >
 
     <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application

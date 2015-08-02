@@ -48,20 +48,24 @@ public class BinaryClockBCD extends BinaryClock {
                 for (int i = 0; i <= 3; i++) {
                     int dotId = BIT[2 * group + j][i];
 
-                    if (group == 0) {
+                    rv.setInt(
+                        dotId,
+                        "setColorFilter",
+                        w.getColor()
+                    );
+
+                    if (w.isAmPm() && group == 0) {
                         if (i == 0 && j == 0) {
-                            if (w.isAmPm()) {
-                                rv.setTextColor(dotId, w.getColor());
-                                rv.setViewVisibility(dotId, bt.isPm()
-                                    ? View.VISIBLE
-                                    : View.INVISIBLE);
-                            }
+                            rv.setViewVisibility(dotId, bt.isPm()
+                                ? View.VISIBLE
+                                : View.INVISIBLE);
                             continue;
 
-                        } else if (w.isAmPm() && (i <= 1 || (i == 2 && j == 0))) {
+                        } else if (i <= 1 || (i == 2 && j == 0)) {
                             rv.setViewVisibility(dotId, View.INVISIBLE);
                             continue;
                         }
+
                     }
 
                     rv.setInt(
@@ -69,11 +73,7 @@ public class BinaryClockBCD extends BinaryClock {
                         getRightAlphaKey(),
                         w.getAlpha(digit[i])
                     );
-                    rv.setInt(
-                        dotId,
-                        "setColorFilter",
-                        w.getColor()
-                    );
+
                 }
             }
 

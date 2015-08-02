@@ -31,7 +31,7 @@ public class ClockService extends Service {
     public void onCreate() {
         super.onCreate();
 
-        alarm = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        alarm = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
             ? new AlarmKitkat()
             : new AlarmLegacy();
 

@@ -11,15 +11,13 @@
                     android:layout_height="wrap_content"
                     android:layout_width="60dp">
 
-        <TextView android:id="@+id/am_pm"
-                  android:layout_height="@dimen/bit"
-                  android:layout_width="@dimen/bit"
-                  android:layout_margin="@dimen/spacing2"
-                  android:text="PM"
-                  android:textSize="12dp"
-                  android:gravity="center"
-                  android:visibility="invisible"
-                  tools:ignore="HardcodedText,SpUsage" />
+        <ImageView android:id="@+id/am_pm"
+                   android:layout_height="@dimen/bit"
+                   android:layout_width="@dimen/bit"
+                   android:layout_margin="@dimen/spacing2"
+                   android:visibility="invisible"
+
+                   android:src="@drawable/blank"/>
 
         <ImageView android:id="@+id/h0_8"
                    android:layout_width="@dimen/bit"

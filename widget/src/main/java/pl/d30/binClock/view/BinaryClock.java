@@ -1,7 +1,11 @@
 package pl.d30.binClock.view;
 
+import android.annotation.SuppressLint;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
+import android.provider.AlarmClock;
 import android.support.annotation.LayoutRes;
 import android.view.View;
 import android.widget.RemoteViews;
@@ -28,7 +32,21 @@ abstract public class BinaryClock {
 
         rv.setViewVisibility(R.id.seconds, w.requiresSeconds() ? View.VISIBLE : View.GONE);
 
+        rv.setOnClickPendingIntent(R.id.master_exploder, getIntent(context));
+
         return rv;
+    }
+
+    private PendingIntent getIntent(Context context) {
+        Intent intent = new Intent(getIntentAction());
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return PendingIntent.getActivity(context, 0, intent, 0);
+    }
+    @SuppressLint("InlinedApi")
+    private String getIntentAction() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
+            ? AlarmClock.ACTION_SHOW_ALARMS
+            : AlarmClock.ACTION_SET_ALARM;
     }
 
     @LayoutRes

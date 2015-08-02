@@ -12,12 +12,12 @@
                   android:layout_height="wrap_content"
                   android:layout_width="wrap_content">
 
-        <ImageView android:id="@+id/h32"
+        <ImageView android:id="@+id/am_pm"
                    android:layout_height="@dimen/bit"
                    android:layout_width="@dimen/bit"
                    android:layout_margin="@dimen/spacing2"
 
-                   android:src="@null"
+                   android:src="@drawable/blank"
                    android:visibility="invisible" />
 
         <ImageView android:id="@+id/h16"

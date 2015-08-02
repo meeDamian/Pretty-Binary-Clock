@@ -1,6 +1,7 @@
 package pl.d30.binClock.view;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import pl.d30.binClock.BinaryTime;
@@ -12,7 +13,7 @@ public class BinaryClockPure extends BinaryClock {
     private static final int[][] BIT = {
 
         // hours
-        {R.id.h32, R.id.h16, R.id.h8, R.id.h4, R.id.h2, R.id.h1},
+        {R.id.am_pm, R.id.h16, R.id.h8, R.id.h4, R.id.h2, R.id.h1},
 
         // minutes
         {R.id.m32, R.id.m16, R.id.m8, R.id.m4, R.id.m2, R.id.m1},
@@ -36,13 +37,27 @@ public class BinaryClockPure extends BinaryClock {
                 int dotId = BIT[group][i];
                 rv.setInt(
                     dotId,
-                    getRightAlphaKey(),
-                    w.getAlpha(digit[i])
-                );
-                rv.setInt(
-                    dotId,
                     "setColorFilter",
                     w.getColor()
+                );
+
+                if (w.isAmPm() && group == 0) {
+                    if (i == 0) {
+                        rv.setViewVisibility(dotId, bt.isPm()
+                            ? View.VISIBLE
+                            : View.INVISIBLE);
+                        continue;
+
+                    } else if (i == 1) {
+                        rv.setViewVisibility(dotId, View.INVISIBLE);
+                        continue;
+                    }
+                }
+
+                rv.setInt(
+                    dotId,
+                    getRightAlphaKey(),
+                    w.getAlpha(digit[i])
                 );
             }
         }
