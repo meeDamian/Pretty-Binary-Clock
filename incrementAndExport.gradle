@@ -92,6 +92,15 @@ void incrementVersionNumber(String which=BUILD) {
 
     version[which] = number.toString()
 
+    //noinspection GroovyFallthrough
+    switch (which) {
+        case MAJOR:
+            version[MINOR] = "0"
+
+        case MINOR:
+            version[BUILD] = "0"
+    }
+
     saveVersion(version)
 }
 
