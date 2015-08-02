@@ -10,7 +10,7 @@ play {
     pk12File            = safeGetFile('PLAY_KEY')
 }
 
-loadSecrets();
+loadSecrets()
 
 android {
     compileSdkVersion 22
