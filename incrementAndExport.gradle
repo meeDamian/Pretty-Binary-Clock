@@ -140,7 +140,7 @@ if (plugins.hasPlugin("android") || plugins.hasPlugin("android-library")) {
                             copy {
                                 from output.outputFile
                                 into getReleasesDir()
-                                rename 'widget-release.apk', "${fileName}.apk"
+                                rename { "${fileName}.apk" }
                             }
 
                             if (variant.getBuildType().isMinifyEnabled()) {
