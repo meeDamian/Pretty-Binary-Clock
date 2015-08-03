@@ -49,6 +49,7 @@ abstract public class BinaryClock {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return PendingIntent.getActivity(context, 0, intent, 0);
     }
+
     @SuppressLint("InlinedApi")
     private String getIntentAction() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
@@ -78,12 +79,15 @@ abstract public class BinaryClock {
     protected void hide(@IdRes int dotId) {
         setVisibility(dotId, false);
     }
+
     protected void show(@IdRes int dotId) {
         setVisibility(dotId, true);
     }
+
     protected void setVisibility(@IdRes int dotId, boolean state) {
         setVisibility(dotId, state, false);
     }
+
     protected void setVisibility(@IdRes int dotId, boolean state, boolean useGone) {
         rv.setViewVisibility(dotId, state
                 ? View.VISIBLE

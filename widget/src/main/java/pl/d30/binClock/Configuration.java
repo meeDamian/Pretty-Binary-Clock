@@ -26,7 +26,7 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
 
     private static final String TAG_BILLING = "BinaryBilling";
 
-    private static final String PREMIUM = "premium";
+    private static final String PREMIUM           = "premium";
     private static final String PREMIUM_STORE_KEY = "premium.8b021080de";
 
     private BillingProcessor bp;
@@ -137,6 +137,13 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
         super.onDestroy();
     }
 
+    private void showPremiumDialog() {
+        SkuDetails sku = bp.getPurchaseListingDetails(PREMIUM_STORE_KEY);
+        Log.d(TAG_BILLING, sku.toString());
+
+        //        bp.purchase(this, PREMIUM_STORE_KEY);
+    }
+
     protected static int getWidgetId(Bundle b) {
         return b != null
             ? b.getInt(EXTRA_APPWIDGET_ID, INVALID_APPWIDGET_ID)
@@ -162,29 +169,29 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
                 @Override
                 public boolean onPreferenceChange(Preference pref, Object newBkg) {
 
-                boolean setBlack = false;
-                switch (newBkg.toString()) {
-                    case "0":
-                        pref.setSummary(R.string.background_nobkg);
-                        break;
+                    boolean setBlack = false;
+                    switch (newBkg.toString()) {
+                        case "0":
+                            pref.setSummary(R.string.background_nobkg);
+                            break;
 
-                    case "1":
-                        pref.setSummary(R.string.background_black);
-                        break;
+                        case "1":
+                            pref.setSummary(R.string.background_black);
+                            break;
 
-                    case "2":
-                        pref.setSummary(R.string.background_white);
-                        setBlack = true;
-                        break;
-                }
+                        case "2":
+                            pref.setSummary(R.string.background_white);
+                            setBlack = true;
+                            break;
+                    }
 
-                if (dotColor != null) {
-                    int dot = getPreferenceManager().getSharedPreferences().getInt(Widget.SP_KEY_DOT_COLOR, -1);
-                    if (dot == -1)
-                        dotColor.setValue(setBlack ? 0xff000000 : 0xffffffff, true);
-                }
+                    if (dotColor != null) {
+                        int dot = getPreferenceManager().getSharedPreferences().getInt(Widget.SP_KEY_DOT_COLOR, -1);
+                        if (dot == -1)
+                            dotColor.setValue(setBlack ? 0xff000000 : 0xffffffff, true);
+                    }
 
-                return true;
+                    return true;
                 }
             });
 
@@ -207,11 +214,11 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
             am_pm.setOnPreferenceChangeListener(new CheckBoxPreference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Boolean enabled = (Boolean) newValue;
-                if (enabled)
-                    toast("Dem dot on dem top left be PM. No dot be AM.");
+                    Boolean enabled = (Boolean) newValue;
+                    if (enabled)
+                        toast("Dem dot on dem top left be PM. No dot be AM.");
 
-                return true;
+                    return true;
                 }
             });
 
@@ -226,8 +233,8 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
             premium.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                showBuyPremiumDialog();
-                return false;
+                    showBuyPremiumDialog();
+                    return false;
                 }
             });
         }
@@ -240,12 +247,5 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
         private void toast(String text) {
             Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void showPremiumDialog() {
-        SkuDetails sku = bp.getPurchaseListingDetails(PREMIUM_STORE_KEY);
-        Log.d(TAG_BILLING, sku.toString());
-
-//        bp.purchase(this, PREMIUM_STORE_KEY);
     }
 }

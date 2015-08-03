@@ -12,9 +12,9 @@ public class BinaryTime {
     public static final int MINUTE = 1;
     public static final int SECOND = 2;
 
-    private int hours;
-    private int minutes;
-    private int seconds;
+    private int     hours;
+    private int     minutes;
+    private int     seconds;
     private boolean pm;
 
     public BinaryTime() {
@@ -45,8 +45,13 @@ public class BinaryTime {
                 return null;
         }
     }
+
     public boolean isPm() {
         return pm;
+    }
+
+    private boolean isItPm(int hour) {
+        return hour == 12 || hour != 0 && hour > 12;
     }
 
     private static int breakTheHour(int hour) {
@@ -57,9 +62,6 @@ public class BinaryTime {
             return hour % 12;
 
         return hour;
-    }
-    private boolean isItPm(int hour) {
-        return hour == 12 || hour != 0 && hour > 12;
     }
 
     private static boolean[] getDigit(int value, int whichDigit) {
