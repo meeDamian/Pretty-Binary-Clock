@@ -178,9 +178,11 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
                         break;
                 }
 
-                int dot = getPreferenceManager().getSharedPreferences().getInt(Widget.SP_KEY_DOT_COLOR, -1);
-                if (dot == -1)
-                    dotColor.setValue(setBlack ? 0xff000000 : 0xffffffff, true);
+                if (dotColor != null) {
+                    int dot = getPreferenceManager().getSharedPreferences().getInt(Widget.SP_KEY_DOT_COLOR, -1);
+                    if (dot == -1)
+                        dotColor.setValue(setBlack ? 0xff000000 : 0xffffffff, true);
+                }
 
                 return true;
                 }
