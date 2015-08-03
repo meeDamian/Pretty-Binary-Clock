@@ -2,7 +2,6 @@ package pl.d30.binClock.view;
 
 
 import android.content.Context;
-import android.view.View;
 import android.widget.RemoteViews;
 
 import pl.d30.binClock.BinaryTime;
@@ -32,7 +31,7 @@ public class BinaryClockBCD extends BinaryClock {
 
     @Override
     public RemoteViews getRemoteView(Context c) {
-        RemoteViews rv = super.getRemoteView(c);
+        prepareRemoteView(c);
 
         int groups = w.requiresSeconds()
             ? 3
@@ -40,7 +39,7 @@ public class BinaryClockBCD extends BinaryClock {
                 ? 2
                 : 1;
 
-        rv.setViewVisibility(R.id.minutes, w.doMinutesFit() ? View.VISIBLE : View.GONE);
+        setVisibility(R.id.minutes, w.doMinutesFit(), true);
 
         for (int group = 0; group < groups; group++)
             for (int j = 0; j <= 1; j++) {
@@ -48,32 +47,21 @@ public class BinaryClockBCD extends BinaryClock {
                 for (int i = 0; i <= 3; i++) {
                     int dotId = BIT[2 * group + j][i];
 
-                    rv.setInt(
-                        dotId,
-                        METHOD_COLOR_FILTER,
-                        w.getColor()
-                    );
+                    setColor(dotId);
 
                     if (w.isAmPm() && group == 0) {
                         if (i == 0 && j == 0) {
-                            rv.setViewVisibility(dotId, bt.isPm()
-                                ? View.VISIBLE
-                                : View.INVISIBLE);
+                            show(dotId);
+                            setAlpha(dotId, bt.isPm());
                             continue;
 
                         } else if (i <= 1 || (i == 2 && j == 0)) {
-                            rv.setViewVisibility(dotId, View.INVISIBLE);
+                            hide(dotId);
                             continue;
                         }
-
                     }
 
-                    rv.setInt(
-                        dotId,
-                        getRightAlphaKey(),
-                        w.getAlpha(digit[i])
-                    );
-
+                    setAlpha(dotId, digit[i]);
                 }
             }
 
