@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.anjlab.android.iab.v3.SkuDetails;
 import com.anjlab.android.iab.v3.TransactionDetails;
+import com.flask.colorpicker.ColorPickerPreference;
 
 import static android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_ID;
 import static android.appwidget.AppWidgetManager.INVALID_APPWIDGET_ID;
@@ -132,6 +134,9 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
     }
 
     public static class BinaryWidgetSettings extends PreferenceFragment {
+
+        private ColorPickerPreference dotColor;
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -142,6 +147,23 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
 
             addPreferencesFromResource(R.xml.preferences);
 
+            ListPreference bkg = (ListPreference) findPreference(Widget.SP_KEY_BACKGROUND);
+            bkg.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+                int dot = getPreferenceManager().getSharedPreferences().getInt(Widget.SP_KEY_DOT_COLOR, -1);
+                if (dot == -1) {
+                    dotColor.setValue(newValue.toString().equals("2")
+                        ? 0xff000000
+                        : 0xffffffff
+                    , true);
+                }
+                return true;
+                }
+            });
+
+
             boolean isPremium = true;
             setPremium(isPremium);
         }
@@ -151,7 +173,7 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
             Preference premium = findPreference(PREMIUM);
             getPreferenceScreen().removePreference(premium);
 
-            Preference dotColor = findPreference(Widget.SP_KEY_DOT_COLOR);
+            dotColor = (ColorPickerPreference) findPreference(Widget.SP_KEY_DOT_COLOR);
             dotColor.setEnabled(true);
 
             Preference compact = findPreference(Widget.SP_KEY_TYPE);
