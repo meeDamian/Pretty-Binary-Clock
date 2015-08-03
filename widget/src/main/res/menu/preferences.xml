@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:tools="http://schemas.android.com/tools"
-      xmlns:android="http://schemas.android.com/apk/res/android">
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      tools:ignore="AppCompatResource">
 
-    <item android:id="@+id/menu_done"
-          android:title="@string/menu_done"
-          android:icon="@drawable/ic_done_white_24dp"
-          android:showAsAction="ifRoom"
-          tools:ignore="AppCompatResource"/>
+      <!-- TODO: TEMP ITEM -->
+      <item android:id="@+id/hackPremium"
+            android:title="Hack Premium"
+            android:icon="@drawable/ic_shop_white_36dp"
+            android:showAsAction="ifRoom"
+            tools:ignore="HardcodedText" />
+
+
+      <item android:id="@+id/menu_done"
+            android:title="@string/menu_done"
+            android:icon="@drawable/ic_done_white_24dp"
+            android:showAsAction="ifRoom" />
 
 </menu>

@@ -24,10 +24,14 @@ import static pl.d30.binClock.ClockService.sendToService;
 
 public class Configuration extends PreferenceActivity implements BillingProcessor.IBillingHandler {
 
+    private static final String TAG_BILLING = "BinaryBilling";
+
     private static final String PREMIUM = "premium";
     private static final String PREMIUM_STORE_KEY = "premium.8b021080de";
 
     private BillingProcessor bp;
+
+    private BinaryWidgetSettings bws;
 
     private int widgetId;
 
@@ -35,6 +39,7 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // NOTE: small hobby project - not worth the hassle to obfuscate
         bp = new BillingProcessor(this, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtQNvm3LK3qekOoo78aJIrrttSB4ZBdSPaUtbTSKSKKh4WS65guzavw1uLBE/sNcncPCLg9umWedvNeis++6gaxCQqTBT58RFsSjAap5zcbAWOpAD5UHrcmXt9DIKv66gcXtYEeTbRKPuoaSLWyoeng9O91TQjnHaPDkV0VgyFhN3GYY1eqrTCMRi9NnNiHvrKTV2HwFhtcbYpxU+W2ypSDfI5Sevs2s+GubCcyC3t850phVJe+qH1lDZPAmoxulWChTdNjyHR5WFQ6b6LSGv4gmgK0NlpMTJCa/7XpROlxXF18IhdjTgDC7lHjKK7DtC0E0beVrYv5jUAhZLkG18lQIDAQAB", this);
         bp.loadOwnedPurchasesFromGoogle();
 
@@ -47,7 +52,7 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
         if (widgetId == INVALID_APPWIDGET_ID)
             finish();
 
-        BinaryWidgetSettings bws = new BinaryWidgetSettings();
+        bws = new BinaryWidgetSettings();
         Bundle b = new Bundle();
         b.putInt(EXTRA_APPWIDGET_ID, widgetId);
         bws.setArguments(b);
@@ -68,6 +73,11 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.hackPremium:
+                bws.setPremium(true);
+                item.setVisible(false);
+                return true;
+
             case R.id.menu_done:
             case android.R.id.home:
                 return createWidget();
@@ -80,7 +90,7 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
     private boolean createWidget() {
         Bundle b = new Bundle();
         b.putInt("wid", widgetId);
-        sendToService(this, ClockIntent.BINARY_WIDGET_CREATE, b);
+        sendToService(this, Provider.BINARY_WIDGET_CREATE, b);
 
         // "Phantom widgets" protection
         new Widget(this, widgetId).makeValid();
@@ -95,22 +105,22 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
 
     @Override
     public void onProductPurchased(String s, TransactionDetails transactionDetails) {
-        Log.d("BinaryBilling", "onProductPurchased: " + s);
+        Log.d(TAG_BILLING, "onProductPurchased: " + s);
     }
 
     @Override
     public void onPurchaseHistoryRestored() {
-        Log.d("BinaryBilling", "onPurchaseHistoryRestored");
+        Log.d(TAG_BILLING, "onPurchaseHistoryRestored");
     }
 
     @Override
     public void onBillingError(int i, Throwable throwable) {
-        Log.d("BinaryBilling", "onBillingError: " + i);
+        Log.d(TAG_BILLING, "onBillingError: " + i);
     }
 
     @Override
     public void onBillingInitialized() {
-        Log.d("BinaryBilling", "onBillingInitialized");
+        Log.d(TAG_BILLING, "onBillingInitialized");
     }
 
     @Override
@@ -150,22 +160,33 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
             ListPreference bkg = (ListPreference) findPreference(Widget.SP_KEY_BACKGROUND);
             bkg.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                public boolean onPreferenceChange(Preference pref, Object newBkg) {
+
+                boolean setBlack = false;
+                switch (newBkg.toString()) {
+                    case "0":
+                        pref.setSummary(R.string.background_nobkg);
+                        break;
+
+                    case "1":
+                        pref.setSummary(R.string.background_black);
+                        break;
+
+                    case "2":
+                        pref.setSummary(R.string.background_white);
+                        setBlack = true;
+                        break;
+                }
 
                 int dot = getPreferenceManager().getSharedPreferences().getInt(Widget.SP_KEY_DOT_COLOR, -1);
-                if (dot == -1) {
-                    dotColor.setValue(newValue.toString().equals("2")
-                        ? 0xff000000
-                        : 0xffffffff
-                    , true);
-                }
+                if (dot == -1)
+                    dotColor.setValue(setBlack ? 0xff000000 : 0xffffffff, true);
+
                 return true;
                 }
             });
 
-
-            boolean isPremium = true;
-            setPremium(isPremium);
+            setPremium(false);
         }
 
 
@@ -221,7 +242,8 @@ public class Configuration extends PreferenceActivity implements BillingProcesso
 
     private void showPremiumDialog() {
         SkuDetails sku = bp.getPurchaseListingDetails(PREMIUM_STORE_KEY);
-        Log.d("BinaryBilling", sku.toString());
-        bp.purchase(this, PREMIUM_STORE_KEY);
+        Log.d(TAG_BILLING, sku.toString());
+
+//        bp.purchase(this, PREMIUM_STORE_KEY);
     }
 }

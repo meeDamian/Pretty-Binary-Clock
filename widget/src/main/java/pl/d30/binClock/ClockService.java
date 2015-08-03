@@ -91,35 +91,35 @@ public class ClockService extends Service {
                 break;
 
             case Intent.ACTION_SCREEN_ON:
-            case ClockIntent.BINARY_ALARM_START:
-                if (b != null && b.getBoolean("clean", false))
+            case Provider.BINARY_ALARM_START:
+                if (b != null && b.getBoolean(Provider.KEY_CLEAN, false))
                     Widget.clearInvalidWidgets(this);
 
-            case ClockIntent.BINARY_WIDGET_CREATE:
+            case Provider.BINARY_WIDGET_CREATE:
                 alarm.start();
                 break;
 
-            case ClockIntent.BINARY_WIDGET_CHANGE:
-                new Widget(this, b.getInt("wid"))
+            case Provider.BINARY_WIDGET_CHANGE:
+                new Widget(this, b.getInt(Provider.KEY_WID))
                     .setDimensions(
-                        b.getInt("appWidgetMinHeight"),
-                        b.getInt("appWidgetMaxHeight"),
-                        b.getInt("appWidgetMinWidth"),
-                        b.getInt("appWidgetMaxWidth")
+                        b.getInt(Widget.MIN_HEIGHT_RAW),
+                        b.getInt(Widget.MAX_HEIGHT_RAW),
+                        b.getInt(Widget.MIN_WIDTH_RAW),
+                        b.getInt(Widget.MAX_WIDTH_RAW)
                     );
 
                 alarm.start();
 
                 break;
 
-            case ClockIntent.BINARY_WIDGET_REMOVE:
-                int[] wids = b.getIntArray("wids");
+            case Provider.BINARY_WIDGET_REMOVE:
+                int[] wids = b.getIntArray(Provider.KEY_WIDS);
                 if (wids != null)
                     for (int wid : wids)
                         new Widget(this, wid).remove();
                 break;
 
-            case ClockIntent.BINARY_ALARM_STOP:
+            case Provider.BINARY_ALARM_STOP:
                 stopSelf();
                 break;
 

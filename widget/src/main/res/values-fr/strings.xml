@@ -11,8 +11,8 @@
     <string name="background_summary">Choisi ta couleur préférée</string>
 
     <string name="compact_title">Binarise de nombres entiers</string>
-    <string name="compactOn_summary">Chaque numéro sera une colonne</string>
-    <string name="compactOff_summary">Chaque chiffre sera une colonne</string>
+    <string name="compact_summary_on">Chaque numéro sera une colonne</string>
+    <string name="compact_summary_off">Chaque chiffre sera une colonne</string>
     
     <string name="menu_done">Sauvgarde</string>
 </resources>

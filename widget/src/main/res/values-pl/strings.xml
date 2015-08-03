@@ -11,8 +11,8 @@
     <string name="background_summary">Wybierz swój ulubiony kolor</string>
 
     <string name="compact_title">Ubinarnij całe numery</string>
-    <string name="compactOn_summary">Każdy numer będzie jedną kolumną</string>
-    <string name="compactOff_summary">Każda cyfra będzie kolumną</string>
+    <string name="compact_summary_on">Każdy numer będzie jedną kolumną</string>
+    <string name="compact_summary_off">Każda cyfra będzie kolumną</string>
 
     <string name="menu_done">Zapisz</string>
 </resources>

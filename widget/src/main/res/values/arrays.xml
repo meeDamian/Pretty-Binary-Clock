@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- for backgrounds -->
-    <string-array name="background_list">
-        <item>None (default)</item>
-        <item>Black</item>
-        <item>White</item>
+    <string-array name="background_list" translatable="false">
+        <item>@string/background_none</item>
+        <item>@string/background_black</item>
+        <item>@string/background_white</item>
     </string-array>
 
     <string-array name="values_three" translatable="false">

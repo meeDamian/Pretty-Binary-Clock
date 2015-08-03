@@ -16,6 +16,12 @@ import pl.d30.binClock.Widget;
 
 abstract public class BinaryClock {
 
+
+    protected static final String METHOD_BACKGROUND   = "setBackgroundResource";
+    protected static final String METHOD_COLOR_FILTER = "setColorFilter";
+    protected static final String METHOD_ALPHA        = "setImageAlpha";
+    protected static final String METHOD_ALPHA_LEGACY = "setAlpha";
+
     protected Widget     w;
     protected BinaryTime bt;
 
@@ -28,7 +34,7 @@ abstract public class BinaryClock {
         RemoteViews rv = new RemoteViews(context.getPackageName(), getLayout());
 
         if (w.hasBackground())
-            rv.setInt(R.id.master_exploder, "setBackgroundResource", w.getBackground());
+            rv.setInt(R.id.master_exploder, METHOD_BACKGROUND, w.getBackground());
 
         rv.setViewVisibility(R.id.seconds, w.requiresSeconds() ? View.VISIBLE : View.GONE);
 
@@ -54,7 +60,7 @@ abstract public class BinaryClock {
 
     protected static String getRightAlphaKey() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN
-            ? "setImageAlpha"
-            : "setAlpha";
+            ? METHOD_ALPHA
+            : METHOD_ALPHA_LEGACY;
     }
 }

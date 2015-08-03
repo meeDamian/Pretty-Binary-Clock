@@ -13,13 +13,20 @@ import pl.d30.binClock.view.BinaryClock;
 import pl.d30.binClock.view.BinaryClockBCD;
 import pl.d30.binClock.view.BinaryClockPure;
 
-import static pl.d30.binClock.ClockIntent.BINARY_ALARM_START;
-import static pl.d30.binClock.ClockIntent.BINARY_ALARM_STOP;
-import static pl.d30.binClock.ClockIntent.BINARY_WIDGET_CHANGE;
-import static pl.d30.binClock.ClockIntent.BINARY_WIDGET_REMOVE;
 import static pl.d30.binClock.ClockService.sendToService;
 
 public class Provider extends AppWidgetProvider {
+
+    public static final String BINARY_ALARM_START = "pl.d30.binClock.ALARM_START";
+    public static final String BINARY_ALARM_STOP  = "pl.d30.binClock.ALARM_STOP";
+
+    public static final String BINARY_WIDGET_CREATE = "pl.d30.binClock.WIDGET_CREATE";
+    public static final String BINARY_WIDGET_CHANGE = "pl.d30.binClock.WIDGET_CHANGE";
+    public static final String BINARY_WIDGET_REMOVE = "pl.d30.binClock.WIDGET_REMOVE";
+
+    public static final String KEY_CLEAN = "clean";
+    public static final String KEY_WID   = "wid";
+    public static final String KEY_WIDS  = "wids";
 
     // this litter sucker manages everything that doesn't fit to any other method here
     public void onReceive(@NonNull Context c, @NonNull Intent intent) {
@@ -32,7 +39,7 @@ public class Provider extends AppWidgetProvider {
             case Intent.ACTION_MY_PACKAGE_REPLACED:
             case Intent.ACTION_BOOT_COMPLETED:
                 Bundle b = new Bundle();
-                b.putBoolean("clean", true);
+                b.putBoolean(KEY_CLEAN, true);
                 sendToService(c, BINARY_ALARM_START, b);
                 return;
         }
@@ -45,13 +52,13 @@ public class Provider extends AppWidgetProvider {
     }
 
     public void onAppWidgetOptionsChanged(Context c, AppWidgetManager awm, int wid, Bundle newOptions) {
-        newOptions.putInt("wid", wid);
+        newOptions.putInt(KEY_WID, wid);
         sendToService(c, BINARY_WIDGET_CHANGE, newOptions);
     }
 
     public void onDeleted(Context c, int[] ids) {
         Bundle b = new Bundle();
-        b.putIntArray("wids", ids);
+        b.putIntArray(KEY_WIDS, ids);
         sendToService(c, BINARY_WIDGET_REMOVE, b);
     }
 

@@ -37,7 +37,7 @@ public class BinaryClockPure extends BinaryClock {
                 int dotId = BIT[group][i];
                 rv.setInt(
                     dotId,
-                    "setColorFilter",
+                    METHOD_COLOR_FILTER,
                     w.getColor()
                 );
 

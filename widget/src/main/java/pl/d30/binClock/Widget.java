@@ -28,6 +28,16 @@ public class Widget {
     public static final String SP_KEY_TYPE       = "compact";
     public static final String SP_KEY_AM_PM      = "AM_PM";
 
+    private static final String MIN_HEIGHT = "minHeight";
+    private static final String MAX_HEIGHT = "maxHeight";
+    private static final String MIN_WIDTH  = "minWidth";
+    private static final String MAX_WIDTH  = "maxWidth";
+
+    public static final String MIN_HEIGHT_RAW = "appWidgetMinHeight";
+    public static final String MAX_HEIGHT_RAW = "appWidgetMaxHeight";
+    public static final String MIN_WIDTH_RAW  = "appWidgetMinWidth";
+    public static final String MAX_WIDTH_RAW  = "appWidgetMaxWidth";
+
 
     // widget characteristics
     private int     id;
@@ -111,10 +121,10 @@ public class Widget {
     }
 
     private void processSize(SharedPreferences sp) {
-        minHeight = getInteger(sp, "minHeight");
-        maxHeight = getInteger(sp, "maxHeight");
-        minWidth = getInteger(sp, "minWidth");
-        maxWidth = getInteger(sp, "maxWidth");
+        minHeight = getInteger(sp, MIN_HEIGHT);
+        maxHeight = getInteger(sp, MAX_HEIGHT);
+        minWidth = getInteger(sp, MIN_WIDTH);
+        maxWidth = getInteger(sp, MAX_WIDTH);
     }
 
     private void processPremium(SharedPreferences sp) {
@@ -148,10 +158,10 @@ public class Widget {
     public void setDimensions(int minH, int maxH, int minW, int maxW) {
         getPrefs()
             .edit()
-            .putInt("minHeight", minHeight = minH)
-            .putInt("maxHeight", maxHeight = maxH)
-            .putInt("minWidth", minWidth = minW)
-            .putInt("maxWidth", maxWidth = maxW)
+            .putInt(MIN_HEIGHT, minHeight = minH)
+            .putInt(MAX_HEIGHT, maxHeight = maxH)
+            .putInt(MIN_WIDTH, minWidth = minW)
+            .putInt(MAX_WIDTH, maxWidth = maxW)
             .commit();
     }
 

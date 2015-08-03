@@ -50,7 +50,7 @@ public class BinaryClockBCD extends BinaryClock {
 
                     rv.setInt(
                         dotId,
-                        "setColorFilter",
+                        METHOD_COLOR_FILTER,
                         w.getColor()
                     );
 

@@ -11,8 +11,8 @@
     <string name="background_summary">Elige un color que te guste</string>
 
     <string name="compact_title">Binarizar todos los números</string>
-    <string name="compactOn_summary">Cada número es una columna</string>
-    <string name="compactOff_summary">Cada cifra es una columna</string>
+    <string name="compact_summary_on">Cada número es una columna</string>
+    <string name="compact_summary_off">Cada cifra es una columna</string>
     
     <string name="menu_done">Guardar</string>
 </resources>

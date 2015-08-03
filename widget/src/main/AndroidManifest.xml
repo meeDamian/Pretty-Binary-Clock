@@ -37,7 +37,7 @@
 
         <activity
             android:name=".Configuration"
-            android:label="Binary Clock Widget" >
+            android:label="@string/app_config_title" >
 
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />

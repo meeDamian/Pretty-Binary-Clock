@@ -4,21 +4,21 @@
 
     <Preference
         android:key="premium"
-        android:title="Unlock all options"
-        android:summary="See what goodies premium gives you"
+        android:title="@string/premium_title"
+        android:summary="@string/premium_summary"
         android:icon="@drawable/ic_shop_white_36dp" />
 
     <ListPreference
         android:key="background"
         android:title="@string/background_title"
-        android:summary="@string/background_summary"
+        android:summary="@string/background_nobkg"
         android:entries="@array/background_list"
         android:entryValues="@array/values_three"
         android:defaultValue="0" />
 
     <com.flask.colorpicker.ColorPickerPreference
         android:key="dotColor"
-        android:title="Dots color"
+        android:title="@string/dots_title"
         android:enabled="false"
 
         app:pickerTitle="@string/color_picker_title"
@@ -28,24 +28,24 @@
 
     <SwitchPreference
         android:key="seconds"
-        android:title="Seconds"
-        android:summaryOn="Show always when enough space"
-        android:summaryOff="Hours and minutes only"
+        android:title="@string/seconds_title"
+        android:summaryOn="@string/seconds_summary_on"
+        android:summaryOff="@string/seconds_summary_off"
         android:defaultValue="true" />
 
     <CheckBoxPreference
         android:key="AM_PM"
-        android:title="Use AM/PM format"
-        android:summaryOn="1:00 PM"
-        android:summaryOff="13:00"
+        android:title="@string/ampm_title"
+        android:summaryOn="@string/ampm_summary_on"
+        android:summaryOff="@string/ampm_summary_off"
         android:defaultValue="false"
         android:enabled="false" />
 
     <CheckBoxPreference
         android:key="compact"
         android:title="@string/compact_title"
-        android:summaryOn="@string/compactOn_summary"
-        android:summaryOff="@string/compactOff_summary"
+        android:summaryOn="@string/compact_summary_on"
+        android:summaryOff="@string/compact_summary_off"
         android:defaultValue="false"
         android:enabled="false" />
 
