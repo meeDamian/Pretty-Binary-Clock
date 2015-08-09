@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="background_list">
-        <item>Aucun (par défaut)</item>
-        <item>Noir</item>
-        <item>Blanc</item>
-    </string-array>
-</resources>
