@@ -5,7 +5,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:gravity="center"
-              tools:ignore="ContentDescription,RtlHardcoded,ObsoleteLayoutParam">
+              tools:ignore="ContentDescription">
 
     <RelativeLayout android:id="@+id/hours"
                     android:layout_height="wrap_content"
@@ -25,6 +25,7 @@
                    android:layout_margin="@dimen/spacing2"
 
                    android:layout_toRightOf="@id/am_pm"
+                   android:layout_toEndOf="@id/am_pm"
 
                    android:src="@drawable/blank"/>
 
@@ -44,6 +45,7 @@
 
                    android:layout_below="@id/h0_8"
                    android:layout_toRightOf="@id/h1_4"
+                   android:layout_toEndOf="@id/h1_4"
 
                    android:src="@drawable/blank" />
 
@@ -62,6 +64,7 @@
 
                    android:layout_below="@id/h0_4"
                    android:layout_toRightOf="@id/h1_2"
+                   android:layout_toEndOf="@id/h1_2"
 
                    android:src="@drawable/blank" />
 
@@ -80,6 +83,7 @@
 
                    android:layout_below="@id/h0_2"
                    android:layout_toRightOf="@id/h1_1"
+                   android:layout_toEndOf="@id/h1_1"
 
                    android:src="@drawable/blank" />
 
@@ -87,8 +91,7 @@
 
     <RelativeLayout android:id="@+id/minutes"
                     android:layout_height="wrap_content"
-                    android:layout_width="60dp"
-                    android:layout_toRightOf="@id/hours">
+                    android:layout_width="60dp">
 
         <ImageView android:id="@+id/m1_8"
                    android:layout_height="@dimen/bit"
@@ -102,6 +105,7 @@
                    android:layout_margin="@dimen/spacing2"
 
                    android:layout_toRightOf="@id/m1_8"
+                   android:layout_toEndOf="@id/m1_8"
 
                    android:src="@drawable/blank" />
 
@@ -120,6 +124,7 @@
 
                    android:layout_below="@id/m0_8"
                    android:layout_toRightOf="@id/m1_4"
+                   android:layout_toEndOf="@id/m1_4"
 
                    android:src="@drawable/blank" />
 
@@ -138,6 +143,7 @@
 
                    android:layout_below="@id/m0_4"
                    android:layout_toRightOf="@id/m1_2"
+                   android:layout_toEndOf="@id/m1_2"
 
                    android:src="@drawable/blank" />
 
@@ -156,6 +162,7 @@
 
                    android:layout_below="@id/m0_2"
                    android:layout_toRightOf="@id/m1_1"
+                   android:layout_toEndOf="@id/m1_1"
 
                    android:src="@drawable/blank" />
 
@@ -163,8 +170,7 @@
 
     <RelativeLayout android:id="@+id/seconds"
                     android:layout_height="wrap_content"
-                    android:layout_width="60dp"
-                    android:layout_toRightOf="@id/minutes">
+                    android:layout_width="60dp">
 
         <ImageView android:id="@+id/s1_8"
                    android:layout_height="@dimen/bit"
@@ -178,6 +184,7 @@
                    android:layout_margin="@dimen/spacing2"
 
                    android:layout_toRightOf="@id/s1_8"
+                   android:layout_toEndOf="@id/s1_8"
 
                    android:src="@drawable/blank" />
 
@@ -196,6 +203,7 @@
 
                    android:layout_below="@id/s0_8"
                    android:layout_toRightOf="@id/s1_4"
+                   android:layout_toEndOf="@id/s1_4"
 
                    android:src="@drawable/blank" />
 
@@ -214,6 +222,7 @@
 
                    android:layout_below="@id/s0_4"
                    android:layout_toRightOf="@id/s1_2"
+                   android:layout_toEndOf="@id/s1_2"
 
                    android:src="@drawable/blank" />
 
@@ -232,6 +241,7 @@
 
                    android:layout_below="@id/s0_2"
                    android:layout_toRightOf="@id/s1_1"
+                   android:layout_toEndOf="@id/s1_1"
 
                    android:src="@drawable/blank" />
 
