@@ -34,10 +34,8 @@ abstract public class BinaryClock {
     public void prepareRemoteView(Context context) {
         rv = new RemoteViews(context.getPackageName(), getLayout());
 
-        if (w.hasBackground())
-            rv.setInt(R.id.master_exploder, METHOD_BACKGROUND, w.getBackground());
-
-        rv.setViewVisibility(R.id.seconds, w.requiresSeconds() ? View.VISIBLE : View.GONE);
+        setBackground();
+        setVisibility(R.id.seconds, w.requiresSeconds(), true);
 
         rv.setOnClickPendingIntent(R.id.master_exploder, getIntent(context));
     }
@@ -79,15 +77,12 @@ abstract public class BinaryClock {
     protected void hide(@IdRes int dotId) {
         setVisibility(dotId, false);
     }
-
     protected void show(@IdRes int dotId) {
         setVisibility(dotId, true);
     }
-
     protected void setVisibility(@IdRes int dotId, boolean state) {
         setVisibility(dotId, state, false);
     }
-
     protected void setVisibility(@IdRes int dotId, boolean state, boolean useGone) {
         rv.setViewVisibility(dotId, state
                 ? View.VISIBLE
@@ -95,6 +90,11 @@ abstract public class BinaryClock {
                     ? View.GONE
                     : View.INVISIBLE
         );
+    }
+
+    protected void setBackground() {
+        if (w.hasBackground())
+            rv.setInt(R.id.master_exploder, METHOD_BACKGROUND, w.getBackground());
     }
 
     protected static String getRightAlphaKey() {

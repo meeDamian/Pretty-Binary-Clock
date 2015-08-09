@@ -3,14 +3,6 @@
       xmlns:android="http://schemas.android.com/apk/res/android"
       tools:ignore="AppCompatResource">
 
-      <!-- TODO: TEMP ITEM -->
-      <item android:id="@+id/hackPremium"
-            android:title="Hack Premium"
-            android:icon="@drawable/ic_shop_white_36dp"
-            android:showAsAction="ifRoom"
-            tools:ignore="HardcodedText" />
-
-
       <item android:id="@+id/menu_done"
             android:title="@string/menu_done"
             android:icon="@drawable/ic_done_white_24dp"

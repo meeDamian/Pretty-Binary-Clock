@@ -5,7 +5,7 @@
     <string name="app_config_title">Binary Clock Widget</string>
 
     <string name="premium_title">Unlock all options</string>
-    <string name="premium_summary">See what goodies premium gives you</string>
+    <string name="premium_summary">Get premium to use all the goodies</string>
 
     <string name="background_title">Background</string>
     <string name="background_white">White</string>
@@ -23,10 +23,14 @@
     <string name="ampm_title">Use AM/PM format</string>
     <string name="ampm_summary_on">1:00 PM</string>
     <string name="ampm_summary_off">13:00</string>
+    <string name="ampm_hint">Top left dot indicates AM/PM. If on it\'s PM.</string>
 
     <string name="compact_title">Pure binary notation</string>
     <string name="compact_summary_on">Each number is a column</string>
     <string name="compact_summary_off">Each digit is a column</string>
 
     <string name="menu_done">Done</string>
+
+
+
 </resources>
