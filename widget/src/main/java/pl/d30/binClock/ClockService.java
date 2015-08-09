@@ -188,7 +188,7 @@ public class ClockService extends Service {
             t.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
-                    sendBroadcast(getIntent());
+                sendBroadcast(getIntent());
                 }
             }, getDelay(), getInterval());
         }
