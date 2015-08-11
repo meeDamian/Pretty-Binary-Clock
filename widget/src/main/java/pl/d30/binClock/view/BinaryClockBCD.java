@@ -49,13 +49,13 @@ public class BinaryClockBCD extends BinaryClock {
 
                     setColor(dotId);
 
-                    if (w.isAmPm() && group == 0) {
-                        if (i == 0 && j == 0) {
+                    if (w.isAmPm() && group == 0 && j == 0) {
+                        if (i == 0) {
                             show(dotId);
                             setAlpha(dotId, bt.isPm());
                             continue;
 
-                        } else if (i <= 1 || (i == 2 && j == 0)) {
+                        } else if (i <= 2) {
                             hide(dotId);
                             continue;
                         }
